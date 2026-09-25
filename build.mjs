@@ -13,7 +13,10 @@ import { LEGAL } from './src/content/legal.mjs';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const SRC = join(ROOT, 'src');
-const OUT = join(ROOT, 'docs');
+// VT_PREVIEW=<carpeta> genera una copia para vista previa con enlaces explícitos a index.html.
+const PREVIEW = process.env.VT_PREVIEW;
+const OUT = PREVIEW ? PREVIEW : join(ROOT, 'docs');
+const IDX = PREVIEW ? 'index.html' : '';
 const LANGS = ['es', 'en'];
 const PAGES = [gijon, alzira, afiliados, ia];
 
@@ -481,16 +484,16 @@ function footer(lang, links, tagline, tag, base) {
 }
 
 const legalLinks = (lang, base) => ({
-  aviso: `${base}${LEGAL.aviso.slug[lang]}/`,
-  privacy: `${base}${LEGAL.privacidad.slug[lang]}/`,
-  cookies: `${base}${LEGAL.cookies.slug[lang]}/`,
+  aviso: `${base}${LEGAL.aviso.slug[lang]}/${IDX}`,
+  privacy: `${base}${LEGAL.privacidad.slug[lang]}/${IDX}`,
+  cookies: `${base}${LEGAL.cookies.slug[lang]}/${IDX}`,
 });
 
 function renderPage(page, lang) {
   const p = r(page, lang);
   const slug = page.slug[lang], alt = page.slug[lang === 'es' ? 'en' : 'es'];
   const base = up(slug);
-  const altHref = `${base}${alt}/`;
+  const altHref = `${base}${alt}/${IDX}`;
   const links = legalLinks(lang, base);
   const jsonld = { ...p.jsonld, url: `${SITE.url}/${slug}/`, ...(COMPANY.email && { email: COMPANY.email }), ...(COMPANY.phone && { telephone: COMPANY.phone }) };
   if (jsonld.address && COMPANY.address) jsonld.address.streetAddress = COMPANY.address;
@@ -536,9 +539,9 @@ function renderLegal(doc, lang) {
     + `
 <header class="site-header">
   <div class="wrap bar">
-    <a class="brand" href="${base}" aria-label="${r(UI.home, lang)}"><img src="${base}assets/img/logo-vertian.png" alt="VERTIAN SOLUTIONS" width="124" height="28"></a>
+    <a class="brand" href="${base}${IDX}" aria-label="${r(UI.home, lang)}"><img src="${base}assets/img/logo-vertian.png" alt="VERTIAN SOLUTIONS" width="124" height="28"></a>
     <span style="flex:1"></span>
-    ${langSwitch(lang, `${base}${alt}/`)}
+    ${langSwitch(lang, `${base}${alt}/${IDX}`)}
   </div>
 </header>
 <main id="inicio" class="wrap legal">
