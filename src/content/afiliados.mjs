@@ -30,7 +30,7 @@ export const afiliados = {
     h1: T('Medimos lo que <em>ingresa</em>, no lo que gusta.', 'We measure what <em>earns</em>, not what gets likes.'),
     lead: T('Elegimos los programas de afiliación que encajan con tu público, creamos el contenido que convierte y seguimos cada comisión. Cada mes ves ingresos, coste y margen.', 'We pick the affiliate programs that fit your audience, create content that converts and track every commission. Each month you see revenue, cost and margin.'),
     cta1: { href: '#panel', label: T('Ver el panel', 'See the dashboard'), arrow: '↓' },
-    img: { id: 'afiliados-hero', ph: T('Foto horizontal: pantalla con métricas o persona creando contenido', 'Landscape photo: screen with metrics or a person creating content') },
+    img: { id: 'afiliados-hero', pos: '38% 35%', alt: T('Creadora de contenido trabajando junto a un panel de métricas', 'Content creator working next to a metrics dashboard'), ph: T('Foto horizontal: pantalla con métricas o persona creando contenido', 'Landscape photo: screen with metrics or a person creating content') },
     facts: [
       { k: T('MODALIDAD', 'FORMAT'), v: T('Remoto', 'Remote') },
       { k: T('INFORME', 'REPORT'), v: T('Mensual', 'Monthly') },
@@ -71,7 +71,7 @@ export const afiliados = {
       T('Las marcas pagan por ventas, no por visitas. Por eso el trabajo está en tres cosas: elegir programas que paguen bien, escribir contenido que ayude a decidir y medir qué enlaces generan dinero.', 'Brands pay for sales, not visits. So the work comes down to three things: choosing programs that pay well, writing content that helps people decide and measuring which links make money.'),
       T('Las cuentas de afiliación están a tu nombre. Las comisiones te las pagan a ti. Nosotros cobramos una cuota fija que ves antes de empezar.', 'The affiliate accounts are in your name. Commissions are paid to you. We charge a fixed fee you see before we start.'),
     ],
-    img: { id: 'afiliados-explica', ph: T('Foto: persona revisando un informe en el portátil', 'Photo: person reviewing a report on a laptop'), capR: T('INFORME MENSUAL', 'MONTHLY REPORT') },
+    img: { id: 'afiliados-explica', pos: '70% center', alt: T('Mujer revisando un informe de resultados en el portátil', 'Woman reviewing a results report on her laptop'), ph: T('Foto: persona revisando un informe en el portátil', 'Photo: person reviewing a report on a laptop'), capR: T('INFORME MENSUAL', 'MONTHLY REPORT') },
     dl: [
       [T('QUÉ MEDIMOS', 'WHAT WE MEASURE'), T('Ingresos, coste, margen, clics y conversión', 'Revenue, cost, margin, clicks and conversion')],
       [T('QUÉ NO', 'WHAT WE DON’T'), T('Seguidores, «me gusta» o alcance sin ventas', 'Followers, likes or reach without sales')],
