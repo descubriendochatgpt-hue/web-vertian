@@ -605,6 +605,37 @@ for (const lang of LANGS) {
   for (const doc of Object.values(LEGAL)) write(doc.slug[lang], renderLegal(doc, lang));
 }
 writeFileSync(join(OUT, 'index.html'), renderRoot());
+
+// Página de error 404 (Netlify y GitHub Pages la sirven para cualquier dirección que no exista).
+// Usa rutas absolutas porque puede mostrarse en cualquier nivel de carpeta.
+writeFileSync(join(OUT, '404.html'), `<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Página no encontrada | VERTIAN SOLUTIONS</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+<link rel="stylesheet" href="/css/site.css">
+</head>
+<body class="theme-teal">
+<header class="site-header">
+  <div class="wrap bar"><a class="brand" href="/"><img src="/assets/img/logo-vertian.png" alt="VERTIAN SOLUTIONS" width="124" height="28"></a></div>
+</header>
+<main id="inicio" class="wrap legal">
+  <div class="doc">
+    <div class="kicker"><span class="dot">ERROR 404</span><span>VERTIAN SOLUTIONS</span></div>
+    <h1>Esta página no existe.</h1>
+    <p>Puede que la dirección esté mal escrita o que la página haya cambiado. Estas son nuestras páginas:</p>
+    <p lang="en" class="updated">This page doesn’t exist. Here are our pages:</p>
+    <ul>
+${PAGES.map(p => `      <li><a href="/${p.slug.es}/">${esc(resolve(p.meta.ogTitle, 'es'))}</a> · <a href="/${p.slug.en}/" lang="en">English</a></li>`).join('\n')}
+    </ul>
+  </div>
+</main>
+</body>
+</html>
+`);
 writeFileSync(join(OUT, '.nojekyll'), '');
 
 const urls = LANGS.flatMap(l => [...PAGES.map(p => p.slug[l]), ...Object.values(LEGAL).map(d => d.slug[l])]);
