@@ -49,6 +49,11 @@ Solo necesita Node.js 18 o superior, sin instalar nada más.
 
 ## Formulario de contacto
 
+**Recomendado: con Google.** Sigue `google-apps-script/INSTRUCCIONES.md` (unos 10 minutos) y pon la URL que te da Google en `formEndpoint` de `src/site.config.mjs`. Así cada solicitud se guarda en una hoja de cálculo de tu Google Drive, te llega un aviso y el cliente recibe la confirmación desde vertianmail@gmail.com.
+
+**Mientras `formEndpoint` esté vacío** se usa FormSubmit, como se explica a continuación. Con FormSubmit las solicitudes solo quedan en tu correo; no se guardan en ningún otro sitio.
+
+
 Los formularios envían las solicitudes a **vertianmail@gmail.com** mediante [FormSubmit](https://formsubmit.co), un servicio gratuito que no necesita servidor.
 
 - **La primera vez** que alguien envíe el formulario desde la web publicada, llegará a vertianmail@gmail.com un correo de FormSubmit para activarlo. Hay que pulsar el enlace; hasta entonces no llegan las solicitudes.

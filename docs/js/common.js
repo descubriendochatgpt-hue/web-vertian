@@ -57,30 +57,35 @@
       if (!f.privacidad.checked) { say('error', F.privacy); return; }
       say('', F.sending);
       submit.disabled = true;
-      fetch(D.endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          nombre: f.nombre.value.trim(),
-          email: f.email.value.trim(),
-          telefono: f.telefono.value.trim(),
-          servicio: f.servicio.value,
-          mensaje: f.mensaje.value,
-          pagina: D.page,
-          idioma: D.lang,
-          privacidad: 'aceptada',
-          _subject: F.subject + ' · ' + D.page,
-          // Confirmación automática al correo que ha escrito el cliente.
-          _autoresponse: F.autoreply
-            .replace('{nombre}', f.nombre.value.trim())
-            .replace('{servicio}', f.servicio.value)
-            .replace('{correo}', D.contactEmail),
-          _template: 'table',
-          _captcha: 'false'
-        })
-      }).then(function (res) {
+      var datos = {
+        nombre: f.nombre.value.trim(),
+        email: f.email.value.trim(),
+        telefono: f.telefono.value.trim(),
+        servicio: f.servicio.value,
+        mensaje: f.mensaje.value,
+        pagina: D.page,
+        idioma: D.lang,
+        privacidad: 'aceptada'
+      };
+      var peticion;
+      if (D.google) {
+        // Google Apps Script: guarda en la hoja y envía los dos correos desde Gmail.
+        // Se manda como texto plano para que el navegador no necesite permiso previo (CORS).
+        peticion = fetch(D.endpoint, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(datos) });
+      } else {
+        // FormSubmit: reenvía la solicitud por correo y manda la confirmación al cliente.
+        datos._subject = F.subject + ' · ' + D.page;
+        datos._autoresponse = F.autoreply
+          .replace('{nombre}', datos.nombre)
+          .replace('{servicio}', datos.servicio)
+          .replace('{correo}', D.contactEmail);
+        datos._template = 'table';
+        datos._captcha = 'false';
+        peticion = fetch(D.endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(datos) });
+      }
+      peticion.then(function (res) {
         return res.json().catch(function () { return {}; }).then(function (j) {
-          if (!res.ok || String(j.success) === 'false') throw new Error(j.message || 'HTTP ' + res.status);
+          if (!res.ok || String(j.success) === 'false' || j.ok === false) throw new Error(j.message || j.error || 'HTTP ' + res.status);
         });
       }).then(function () {
         say('sent', F.sent);

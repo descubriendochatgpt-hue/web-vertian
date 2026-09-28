@@ -8,6 +8,11 @@ export const SITE = {
   // Los formularios envían las solicitudes a este correo mediante FormSubmit (https://formsubmit.co).
   // La primera vez que alguien envíe el formulario llegará un correo de activación a esta dirección.
   formEmail: 'vertianmail@gmail.com',
+
+  // URL de la aplicación web de Google Apps Script (ver google-apps-script/INSTRUCCIONES.md).
+  // Cuando está puesta, cada solicitud se guarda en tu hoja de Google y el cliente recibe
+  // la confirmación desde tu Gmail. Vacía = se usa FormSubmit.
+  formEndpoint: '',
 };
 
 export const COMPANY = {

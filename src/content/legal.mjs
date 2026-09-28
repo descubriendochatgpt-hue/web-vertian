@@ -85,8 +85,9 @@ export const LEGAL = {
 <h2>5. A quién se comunican</h2>
 <p>No cedemos tus datos a terceros salvo obligación legal. Para funcionar usamos estos proveedores, que actúan como encargados del tratamiento:</p>
 <ul>
-  <li><strong>FormSubmit</strong> (formsubmit.co): recibe el formulario y nos lo reenvía por correo.</li>
-  <li><strong>Google Ireland Ltd.</strong> (Gmail): servicio de correo electrónico donde recibimos las solicitudes.</li>
+${c.google
+  ? '<li><strong>Google Ireland Ltd.</strong> (Google Workspace: Gmail, Hojas de cálculo y Apps Script): recibe el formulario, guarda cada solicitud en una hoja de cálculo privada y envía los correos de aviso y de confirmación.</li>'
+  : '<li><strong>FormSubmit</strong> (formsubmit.co): recibe el formulario, nos lo reenvía por correo y te envía la confirmación.</li>\n  <li><strong>Google Ireland Ltd.</strong> (Gmail): servicio de correo electrónico donde recibimos las solicitudes.</li>'}
   <li><strong>El proveedor de alojamiento de la web</strong>, que puede registrar tu dirección IP por motivos técnicos y de seguridad.</li>
 </ul>
 <p>Algunos de estos proveedores pueden tratar datos fuera del Espacio Económico Europeo. En ese caso, la transferencia se ampara en el Marco de Privacidad de Datos UE-EE. UU. o en cláusulas contractuales tipo aprobadas por la Comisión Europea.</p>
@@ -118,8 +119,9 @@ export const LEGAL = {
 <h2>5. Who we share it with</h2>
 <p>We do not pass your data to third parties unless legally required. To operate, we use the following providers, acting as data processors:</p>
 <ul>
-  <li><strong>FormSubmit</strong> (formsubmit.co): receives the form and forwards it to us by email.</li>
-  <li><strong>Google Ireland Ltd.</strong> (Gmail): the email service where we receive requests.</li>
+${c.google
+  ? '<li><strong>Google Ireland Ltd.</strong> (Google Workspace: Gmail, Sheets and Apps Script): receives the form, stores each request in a private spreadsheet and sends the notification and confirmation emails.</li>'
+  : '<li><strong>FormSubmit</strong> (formsubmit.co): receives the form, forwards it to us by email and sends you the confirmation.</li>\n  <li><strong>Google Ireland Ltd.</strong> (Gmail): the email service where we receive requests.</li>'}
   <li><strong>The website hosting provider</strong>, which may log your IP address for technical and security reasons.</li>
 </ul>
 <p>Some of these providers may process data outside the European Economic Area. Where they do, the transfer relies on the EU-US Data Privacy Framework or on standard contractual clauses approved by the European Commission.</p>
