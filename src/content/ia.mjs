@@ -30,7 +30,7 @@ export const ia = {
     h1: T('Horas que vuelven a tu semana. <em>Con fecha</em> de amortización.', 'Hours back in your week. <em>With a</em> payback date.'),
     lead: T('Hacemos aplicaciones a medida y automatizamos las tareas que se repiten cada semana: presupuestos, facturas, citas, correos y datos. Antes de empezar te decimos cuántas horas ahorras y en cuántos meses se paga.', 'We build custom apps and automate the tasks that repeat every week: quotes, invoices, appointments, emails and data. Before we start, we tell you how many hours you’ll save and how many months it takes to pay for itself.'),
     cta1: { href: '#calculadora', label: T('Calcular mi ahorro', 'Work out my savings'), arrow: '↓' },
-    img: { id: 'ia-hero', ph: T('Foto horizontal: oficina de una pyme o persona trabajando con el ordenador', 'Landscape photo: small business office or person working at a computer') },
+    img: { id: 'ia-hero', pos: '85% 30%', alt: T('Equipo de una pyme trabajando en su oficina', 'Small business team working in their office'), ph: T('Foto horizontal: oficina de una pyme o persona trabajando con el ordenador', 'Landscape photo: small business office or person working at a computer') },
     facts: [
       { k: T('DIAGNÓSTICO', 'ASSESSMENT'), v: T('Gratuito', 'Free') },
       { k: T('PRIMER PILOTO', 'FIRST PILOT'), v: T('2–4 semanas', '2–4 weeks') },
@@ -74,7 +74,7 @@ export const ia = {
       T('Copiar datos de un correo a una hoja, preparar el mismo presupuesto con otros números, recordar citas o sacar el informe de cada lunes. Son tareas pequeñas que suman muchas horas al mes.', 'Copying data from an email into a spreadsheet, preparing the same quote with different numbers, sending appointment reminders or pulling the Monday report. Small tasks that add up to many hours a month.'),
       T('Usamos inteligencia artificial donde aporta: leer documentos, clasificar correos o redactar respuestas. Donde no hace falta, usamos reglas simples, que son más baratas y fallan menos.', 'We use artificial intelligence where it adds value: reading documents, sorting emails or drafting replies. Where it isn’t needed, we use simple rules, which are cheaper and fail less.'),
     ],
-    img: { id: 'ia-explica', ph: T('Foto: persona en una oficina pequeña con papeles y ordenador', 'Photo: person in a small office with paperwork and a computer'), capR: T('PYME · ANTES DE AUTOMATIZAR', 'SMALL BUSINESS · BEFORE AUTOMATION') },
+    img: { id: 'ia-explica', pos: '72% center', alt: T('Administrativa rodeada de carpetas y papeles trabajando con una hoja de cálculo', 'Office worker surrounded by folders and paperwork, working on a spreadsheet'), ph: T('Foto: persona en una oficina pequeña con papeles y ordenador', 'Photo: person in a small office with paperwork and a computer'), capR: T('PYME · ANTES DE AUTOMATIZAR', 'SMALL BUSINESS · BEFORE AUTOMATION') },
     dl: [
       [T('EJEMPLOS', 'EXAMPLES'), T('Presupuestos, facturación, citas, atención al cliente, entrada de datos, informes', 'Quotes, invoicing, appointments, customer service, data entry, reports')],
       [T('SE INTEGRA CON', 'INTEGRATES WITH'), T('Correo, hojas de cálculo, tu programa de facturación y tu CRM', 'Email, spreadsheets, your invoicing software and your CRM')],
