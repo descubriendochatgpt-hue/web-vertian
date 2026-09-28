@@ -68,10 +68,10 @@
         privacidad: 'aceptada'
       };
       var peticion;
-      if (D.google) {
-        // Google Apps Script: guarda en la hoja y envía los dos correos desde Gmail.
-        // Se manda como texto plano para que el navegador no necesite permiso previo (CORS).
-        peticion = fetch(D.endpoint, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(datos) });
+      if (D.supabase) {
+        // Función «contacto» de Supabase: guarda la solicitud y envía los dos correos desde Gmail.
+        datos.web = f.web.value;
+        peticion = fetch(D.endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(datos) });
       } else {
         // FormSubmit: reenvía la solicitud por correo y manda la confirmación al cliente.
         datos._subject = F.subject + ' · ' + D.page;

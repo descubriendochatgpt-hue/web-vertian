@@ -85,8 +85,8 @@ export const LEGAL = {
 <h2>5. A quién se comunican</h2>
 <p>No cedemos tus datos a terceros salvo obligación legal. Para funcionar usamos estos proveedores, que actúan como encargados del tratamiento:</p>
 <ul>
-${c.google
-  ? '<li><strong>Google Ireland Ltd.</strong> (Google Workspace: Gmail, Hojas de cálculo y Apps Script): recibe el formulario, guarda cada solicitud en una hoja de cálculo privada y envía los correos de aviso y de confirmación.</li>'
+${c.supabase
+  ? '<li><strong>Supabase Inc.</strong>: base de datos, alojada en la Unión Europea, donde guardamos cada solicitud.</li>\n  <li><strong>Google Ireland Ltd.</strong> (Gmail): servicio de correo con el que recibimos las solicitudes y te enviamos la confirmación.</li>'
   : '<li><strong>FormSubmit</strong> (formsubmit.co): recibe el formulario, nos lo reenvía por correo y te envía la confirmación.</li>\n  <li><strong>Google Ireland Ltd.</strong> (Gmail): servicio de correo electrónico donde recibimos las solicitudes.</li>'}
   <li><strong>El proveedor de alojamiento de la web</strong>, que puede registrar tu dirección IP por motivos técnicos y de seguridad.</li>
 </ul>
@@ -119,8 +119,8 @@ ${c.google
 <h2>5. Who we share it with</h2>
 <p>We do not pass your data to third parties unless legally required. To operate, we use the following providers, acting as data processors:</p>
 <ul>
-${c.google
-  ? '<li><strong>Google Ireland Ltd.</strong> (Google Workspace: Gmail, Sheets and Apps Script): receives the form, stores each request in a private spreadsheet and sends the notification and confirmation emails.</li>'
+${c.supabase
+  ? '<li><strong>Supabase Inc.</strong>: database, hosted in the European Union, where we store each request.</li>\n  <li><strong>Google Ireland Ltd.</strong> (Gmail): the email service we use to receive requests and send you the confirmation.</li>'
   : '<li><strong>FormSubmit</strong> (formsubmit.co): receives the form, forwards it to us by email and sends you the confirmation.</li>\n  <li><strong>Google Ireland Ltd.</strong> (Gmail): the email service where we receive requests.</li>'}
   <li><strong>The website hosting provider</strong>, which may log your IP address for technical and security reasons.</li>
 </ul>

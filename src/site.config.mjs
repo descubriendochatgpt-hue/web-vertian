@@ -9,10 +9,10 @@ export const SITE = {
   // La primera vez que alguien envíe el formulario llegará un correo de activación a esta dirección.
   formEmail: 'vertianmail@gmail.com',
 
-  // URL de la aplicación web de Google Apps Script (ver google-apps-script/INSTRUCCIONES.md).
-  // Cuando está puesta, cada solicitud se guarda en tu hoja de Google y el cliente recibe
-  // la confirmación desde tu Gmail. Vacía = se usa FormSubmit.
-  formEndpoint: '',
+  // URL de tu proyecto de Supabase, p. ej. https://abcdefghijkl.supabase.co (ver supabase/INSTRUCCIONES.md).
+  // Cuando está puesta, cada solicitud se guarda en la tabla «solicitudes» de Supabase y el cliente
+  // recibe la confirmación desde tu Gmail. Vacía = se usa FormSubmit.
+  supabaseUrl: '',
 };
 
 export const COMPANY = {
