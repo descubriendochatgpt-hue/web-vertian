@@ -30,7 +30,7 @@ function slot(img, cls, base, lang) {
   const ph = r(img.ph, lang);
   for (const ext of ['jpg', 'jpeg', 'png', 'webp']) {
     if (existsSync(join(SRC, 'assets/img', `${img.id}.${ext}`)))
-      return `<div class="slot ${cls}"><img src="${base}assets/img/${img.id}.${ext}" alt="${esc(ph)}" loading="lazy"></div>`;
+      return `<div class="slot ${cls}"><img src="${base}assets/img/${img.id}.${ext}" alt="${esc(ph.replace(/^(Foto( horizontal)?|(Landscape )?photo|Photo): /, '').replace(/^./, c => c.toUpperCase()))}"${cls === 'slot-hero' ? ' fetchpriority="high"' : ' loading="lazy"'}></div>`;
   }
   return `<div class="slot ${cls}" role="img" aria-label="${esc(r(UI.photoPending, lang))}: ${esc(ph)}"><span class="ph">${esc(ph)}</span></div>`;
 }
