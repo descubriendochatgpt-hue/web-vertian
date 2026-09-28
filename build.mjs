@@ -153,12 +153,6 @@ function certCalc(c, js, lang) {
   </div>
   <div class="tool" data-cert-calc>
     <div class="inputs">
-      <div class="voice">
-        <button type="button" class="mic" data-voice aria-pressed="false" aria-label="${esc(c.voiceAria)}">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"></rect><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><path d="M12 18v4"></path></svg>
-        </button>
-        <div class="txt"><div class="t1">${c.voiceT}</div><div class="t2" data-voice-hint aria-live="polite">${js.voiceExample}</div></div>
-      </div>
       <fieldset>
         <legend>${c.l1}</legend>
         <div class="opts" data-tipos>
@@ -425,8 +419,6 @@ const faq = f => `
 
 function contact(c, lang, links) {
   const K = r(CONTACT, lang), C = company(lang);
-  const mic = c.dictate ? `
-          <button type="button" class="mic-sm" data-dictate aria-pressed="false"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"></rect><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path></svg><span data-dictate-label>${K.dictate}</span></button>` : '';
   return `
 <section id="contacto" class="wrap section contact" aria-labelledby="h-contacto">
   <div class="split contact-box">
@@ -449,8 +441,8 @@ function contact(c, lang, links) {
           ${[...c.services, K.other].map(s => `<option value="${esc(s)}">${s}</option>`).join('\n          ')}
         </select>
       </label>
-      <label class="full"><span class="lbl">${K.message}${mic}</span>
-        <textarea name="mensaje" rows="${c.dictate ? 6 : 5}"${c.dictate ? ' class="mono"' : ''}></textarea>
+      <label class="full"><span class="lbl">${K.message}</span>
+        <textarea name="mensaje" rows="${c.mono ? 6 : 5}"${c.mono ? ' class="mono"' : ''}></textarea>
       </label>
       <div class="hp" aria-hidden="true"><label>Web<input name="web" tabindex="-1" autocomplete="off"></label></div>
       <label class="full check">
@@ -500,7 +492,9 @@ function renderPage(page, lang) {
 
   const data = {
     lang, page: page.slug.es, endpoint: `https://formsubmit.co/ajax/${SITE.formEmail}`,
-    form: r(FORM_I18N, lang), dictate: { dictate: r(CONTACT.dictate, lang), stop: r(CONTACT.stop, lang) },
+    form: r(FORM_I18N, lang),
+    // Dirección que se indica al cliente en el correo de confirmación.
+    contactEmail: COMPANY.email || SITE.formEmail,
     ...(p.js || {}),
   };
 

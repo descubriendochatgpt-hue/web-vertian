@@ -1,4 +1,4 @@
-// Comportamiento común: menú móvil, idioma, formulario de contacto y dictado por voz.
+// Comportamiento común: menú móvil, idioma y formulario de contacto.
 (function () {
   'use strict';
 
@@ -70,6 +70,11 @@
           idioma: D.lang,
           privacidad: 'aceptada',
           _subject: F.subject + ' · ' + D.page,
+          // Confirmación automática al correo que ha escrito el cliente.
+          _autoresponse: F.autoreply
+            .replace('{nombre}', f.nombre.value.trim())
+            .replace('{servicio}', f.servicio.value)
+            .replace('{correo}', D.contactEmail),
           _template: 'table',
           _captcha: 'false'
         })
@@ -86,53 +91,6 @@
         if (window.console) console.error('Formulario no enviado:', err && err.message);
         say('error', /activat/i.test(err && err.message) ? F.activation : F.fail);
       }).then(function () { submit.disabled = false; });
-    });
-  }
-
-  // --- Dictado por voz (Web Speech API) ---
-  var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-  VT.voiceLang = D.lang === 'en' ? 'en-GB' : 'es-ES';
-  // Texto para cada error del dictado (no-speech, network, not-allowed…).
-  VT.voiceError = function (code) {
-    var E = (D.form && D.form.voiceErr) || {};
-    if (window.console) console.warn('Dictado por voz:', code);
-    return E[code] || E.other || '';
-  };
-  VT.listen = function (opts) {
-    if (!SR) { opts.unsupported && opts.unsupported(); return null; }
-    var rec = new SR();
-    rec.lang = VT.voiceLang; rec.interimResults = true; rec.continuous = false;
-    rec.onresult = function (e) {
-      var t = ''; for (var i = 0; i < e.results.length; i++) t += e.results[i][0].transcript;
-      opts.result(t);
-    };
-    rec.onerror = function (e) { opts.error && opts.error(e.error); };
-    rec.onend = function () { opts.end && opts.end(); };
-    rec.start();
-    opts.start && opts.start();
-    return rec;
-  };
-
-  var dictBtn = document.querySelector('[data-dictate]');
-  if (dictBtn && form) {
-    var label = dictBtn.querySelector('[data-dictate-label]');
-    var rec = null;
-    var stop = function () {
-      rec = null; dictBtn.setAttribute('aria-pressed', 'false'); label.textContent = D.dictate.dictate;
-    };
-    dictBtn.addEventListener('click', function () {
-      if (rec) { rec.stop(); return; }
-      var ta = form.elements.mensaje, before = ta.value;
-      rec = VT.listen({
-        start: function () { dictBtn.setAttribute('aria-pressed', 'true'); label.textContent = D.dictate.stop; },
-        result: function (t) { ta.value = (before ? before + ' ' : '') + t; },
-        end: stop,
-        error: function (code) {
-          stop();
-          if (code !== 'aborted') form.querySelector('[data-status]').textContent = VT.voiceError(code);
-        },
-        unsupported: function () { form.querySelector('[data-status]').textContent = D.form.noVoice; }
-      });
     });
   }
 

@@ -4,7 +4,6 @@
   var VT = window.VT, D = VT.data, I = D.i18n;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
-  var norm = function (t) { return t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); };
 
   // Recargo por desplazamiento según los tramos [hasta km, €] (null = sin límite).
   var fee = function (km) {
@@ -13,7 +12,7 @@
   };
   var freeKm = D.fee[0][0];
 
-  var S = { tipo: D.tipos[0].id, sup: 80, zone: D.zones[0].name, motivo: 0, urgente: false, letter: 4, listening: null };
+  var S = { tipo: D.tipos[0].id, sup: 80, zone: D.zones[0].name, motivo: 0, urgente: false, letter: 4 };
 
   // ---------- Calculadora ----------
   var calc = $('[data-cert-calc]');
@@ -68,47 +67,6 @@
       '\n· ' + I.msgTerm + ': ' + (S.urgente ? I.msgUrgent : I.msgNormal) +
       '\n· ' + I.msgPrice + ': ' + p.total + ' ' + I.vat;
     VT.prefill(p.t.svc, msg);
-  });
-
-  // ---------- Voz ----------
-  // Reconoce tipo, superficie, municipio, motivo y urgencia en español o inglés.
-  function parseVoice(txt) {
-    var s = norm(txt), o = {};
-    if (/\b(piso|apartamento|atico|estudio|duplex|flat|apartment|studio)\b/.test(s)) o.tipo = 'piso';
-    if (/\b(casa|chalet|unifamiliar|adosad|house|villa|cottage)/.test(s)) o.tipo = 'casa';
-    if (/\b(local|oficina|nave|tienda|comercio|office|shop|store|premises)\b/.test(s)) o.tipo = 'local';
-    if (/\b(edificio|comunidad|bloque|building|block)\b/.test(s)) o.tipo = 'edificio';
-    var m = s.match(/(\d{2,3})\s*(m2|m²|metros|mts|square|sq|m\b)/) || s.match(/(\d{2,3})/);
-    if (m) o.sup = Math.max(20, Math.min(400, Math.round(+m[1] / 5) * 5));
-    D.zones.forEach(function (z) { if (s.indexOf(norm(z.name)) > -1) o.zone = z.name; });
-    D.aliases.forEach(function (a) { if (new RegExp(a[0]).test(s)) o.zone = a[1]; });
-    if (/(vend|venta|sell|sale)/.test(s)) o.motivo = 0;
-    if (/(alquil|arrend|rent|let\b|lease)/.test(s)) o.motivo = 1;
-    if (/(ayuda|subvencion|reforma|rehabilit|grant|renovat|refurb)/.test(s)) o.motivo = 2;
-    if (/(urgente|rapido|cuanto antes|esta semana|urgent|asap|quick|this week)/.test(s)) o.urgente = true;
-    return o;
-  }
-
-  var mic = $('[data-voice]', calc), hint = $('[data-voice-hint]', calc), rec = null;
-  var micOff = function () { rec = null; mic.setAttribute('aria-pressed', 'false'); };
-  mic.addEventListener('click', function () {
-    if (rec) { rec.stop(); return; }
-    rec = VT.listen({
-      start: function () { mic.setAttribute('aria-pressed', 'true'); hint.textContent = I.listening; },
-      result: function (t) {
-        hint.textContent = '«' + t + '»';
-        var o = parseVoice(t);
-        for (var k in o) S[k] = o[k];
-        render();
-      },
-      end: function () {
-        micOff();
-        // Si terminó sin oír nada ni dar error, vuelve el texto de ejemplo.
-        if (hint.textContent === I.listening) hint.textContent = D.voiceExample;
-      },
-      error: function (e) { micOff(); hint.textContent = e === 'aborted' ? D.voiceExample : VT.voiceError(e); },
-      unsupported: function () { hint.textContent = I.noVoice; }
-    });
   });
 
   // ---------- Escala de letras ----------

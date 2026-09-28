@@ -59,9 +59,7 @@ export function certPage(c) {
     calc: {
       num: T('01 · CALCULADORA', '01 · CALCULATOR'),
       h: T('Tu precio en tres preguntas.', 'Your price in three questions.'),
-      lead: T('Toca las opciones o dícelo en voz alta. El precio cambia con cada respuesta y te lo confirmamos por escrito en 24 h.', 'Tap the options or just say it out loud. The price updates with every answer and we confirm it in writing within 24 h.'),
-      voiceT: T('Descríbelo por voz', 'Describe it by voice'),
-      voiceAria: T('Describir el inmueble por voz', 'Describe the property by voice'),
+      lead: T('Toca las opciones. El precio cambia con cada respuesta y te lo confirmamos por escrito en 24 h.', 'Tap the options. The price updates with every answer and we confirm it in writing within 24 h.'),
       l1: T('01 · TIPO DE INMUEBLE', '01 · PROPERTY TYPE'),
       l2: c.l2,
       l3: T('03 · PARA QUÉ Y CUÁNDO', '03 · WHAT FOR AND WHEN'),
@@ -164,7 +162,8 @@ export function certPage(c) {
       lead: T('Te contestamos en 24 h en día laborable con un precio cerrado.', 'We reply within one working day with a fixed price.'),
       hours: T('Lunes a viernes, 9:00–19:00', 'Monday to Friday, 9:00–19:00'),
       services: TIPOS.map(t => t.svc),
-      dictate: true,
+      // Mensaje en letra monoespaciada: recibe el resumen de la calculadora.
+      mono: true,
     },
     footer: { tagline: c.footTag, tag: `CEE · ${c.city.toUpperCase()}` },
     // Datos que necesita el JavaScript de la calculadora.
@@ -175,9 +174,7 @@ export function certPage(c) {
       fee: c.fee,
       barMax: c.barMax,
       mapLabels: c.mapLabels,
-      aliases: c.aliases,
       letters: LETTERS,
-      voiceExample: c.voiceExample,
       i18n: {
         motivos: [T('Venta', 'Sale'), T('Alquiler', 'Rental'), T('Ayudas o reforma', 'Grants or renovation')],
         plazos: [T('Normal · 5 días', 'Standard · 5 days'), T('Urgente · 48 h', 'Urgent · 48 h')],
@@ -187,8 +184,6 @@ export function certPage(c) {
         travel: T('Desplazamiento', 'Travel'),
         term: T('Plazo', 'Turnaround'),
         included: T('incluido', 'included'),
-        listening: T('Escuchando… habla con normalidad.', 'Listening… speak normally.'),
-        noVoice: T('Tu navegador no permite dictado. Prueba con Chrome, Edge o Safari, o toca las opciones.', 'Your browser doesn’t support dictation. Try Chrome, Edge or Safari, or tap the options.'),
         msgHead: T('Datos de la calculadora:', 'Calculator details:'),
         msgType: T('Inmueble', 'Property'),
         msgReason: T('Motivo', 'Purpose'),
@@ -233,7 +228,6 @@ export const gijon = certPage({
   hubAria: T('Diagrama de distancias desde Gijón a los concejos donde trabajamos. Zona de 20 km con desplazamiento incluido.', 'Distance diagram from Gijón to the municipalities we cover. 20 km zone with travel included.'),
   faqH: T('Lo que nos suelen preguntar en Gijón.', 'What people in Gijón usually ask us.'),
   footTag: T('Certificados energéticos en Gijón y concejos cercanos.', 'Energy certificates in Gijón and nearby municipalities.'),
-  voiceExample: T('Por ejemplo: «Piso de 85 metros en Siero, para alquilar».', 'For example: “85 square metre flat in Siero, to rent”.'),
   // km aproximados por carretera; dx/dy en km para el diagrama (norte arriba)
   zones: [
     { name: 'Gijón', km: 0, dx: 0, dy: 0 },
@@ -251,7 +245,6 @@ export const gijon = certPage({
   fee: [[20, 0], [30, 15], [Infinity, 25]],
   barMax: 34,
   mapLabels: [{ t: T('N · MAR CANTÁBRICO', 'N · BAY OF BISCAY'), x: 0, y: -334, a: 'middle' }],
-  aliases: [['pola de siero|lugones', 'Siero'], ['candas', 'Carreño'], ['luanco', 'Gijón']],
 });
 
 export const alzira = certPage({
@@ -288,7 +281,6 @@ export const alzira = certPage({
   hubAria: T('Diagrama de distancias desde Alzira a los municipios de la Ribera Alta donde trabajamos. Zona de 15 km con desplazamiento incluido.', 'Distance diagram from Alzira to the Ribera Alta towns we cover. 15 km zone with travel included.'),
   faqH: T('Lo que nos suelen preguntar en la Ribera.', 'What people in the Ribera usually ask us.'),
   footTag: T('Certificados energéticos en Alzira y la Ribera Alta.', 'Energy certificates in Alzira and the Ribera Alta.'),
-  voiceExample: T('Por ejemplo: «Piso de 85 metros en Algemesí, para alquilar».', 'For example: “85 square metre flat in Algemesí, to rent”.'),
   zones: [
     { name: 'Alzira', km: 0, dx: 0, dy: 0 },
     { name: 'Carcaixent', km: 6, dx: 5, dy: 3 },
@@ -305,5 +297,4 @@ export const alzira = certPage({
   fee: [[15, 0], [Infinity, 15]],
   barMax: 22,
   mapLabels: [{ t: T('N', 'N'), x: 0, y: -334, a: 'middle' }, { t: T('MAR MEDITERRÁNEO →', 'MEDITERRANEAN SEA →'), x: 330, y: 4, a: 'end' }],
-  aliases: [['alcudia', "l'Alcúdia"], ['castellon|vilanova de castello|villanueva de castellon', 'Castelló'], ['benifayo', 'Benifaió'], ['algemesi', 'Algemesí']],
 });

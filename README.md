@@ -53,6 +53,7 @@ Los formularios envían las solicitudes a **vertianmail@gmail.com** mediante [Fo
 
 - **La primera vez** que alguien envíe el formulario desde la web publicada, llegará a vertianmail@gmail.com un correo de FormSubmit para activarlo. Hay que pulsar el enlace; hasta entonces no llegan las solicitudes.
 - Cada solicitud llega con nombre, correo, teléfono, servicio, mensaje (incluidos los datos de la calculadora), página e idioma.
+- El cliente recibe en su correo una confirmación automática, en su idioma, diciendo que estamos trabajando en su solicitud. El texto está en `autoreply` de `src/content/common.mjs`.
 - Tras activarlo, FormSubmit te da un alias aleatorio. Si lo pones en `formEmail` de `src/site.config.mjs`, tu correo deja de aparecer en el código de la web.
 
 ## Publicar
@@ -65,5 +66,4 @@ La carpeta `docs/` es la web completa. Opciones gratuitas:
 ## Notas técnicas
 
 - Las tipografías (Schibsted Grotesk y JetBrains Mono, licencia OFL) se sirven desde la propia web: no se conecta con Google y no hacen falta cookies ni banner.
-- El dictado por voz de las páginas de certificados usa el reconocimiento de voz del navegador (Chrome, Edge, Safari). Donde no existe, se avisa y se pueden tocar las opciones.
 - Se respeta «reducir movimiento» del sistema y la web se adapta al móvil.
