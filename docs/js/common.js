@@ -75,14 +75,16 @@
         })
       }).then(function (res) {
         return res.json().catch(function () { return {}; }).then(function (j) {
-          if (!res.ok || String(j.success) === 'false') throw new Error(j.message || res.status);
+          if (!res.ok || String(j.success) === 'false') throw new Error(j.message || 'HTTP ' + res.status);
         });
       }).then(function () {
         say('sent', F.sent);
         ['nombre', 'email', 'telefono', 'mensaje'].forEach(function (k) { f[k].value = ''; });
         f.privacidad.checked = false;
-      }).catch(function () {
-        say('error', F.fail);
+      }).catch(function (err) {
+        // El motivo queda en la consola del navegador para poder diagnosticarlo.
+        if (window.console) console.error('Formulario no enviado:', err && err.message);
+        say('error', /activat/i.test(err && err.message) ? F.activation : F.fail);
       }).then(function () { submit.disabled = false; });
     });
   }
@@ -90,6 +92,12 @@
   // --- Dictado por voz (Web Speech API) ---
   var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
   VT.voiceLang = D.lang === 'en' ? 'en-GB' : 'es-ES';
+  // Texto para cada error del dictado (no-speech, network, not-allowed…).
+  VT.voiceError = function (code) {
+    var E = (D.form && D.form.voiceErr) || {};
+    if (window.console) console.warn('Dictado por voz:', code);
+    return E[code] || E.other || '';
+  };
   VT.listen = function (opts) {
     if (!SR) { opts.unsupported && opts.unsupported(); return null; }
     var rec = new SR();
@@ -119,7 +127,10 @@
         start: function () { dictBtn.setAttribute('aria-pressed', 'true'); label.textContent = D.dictate.stop; },
         result: function (t) { ta.value = (before ? before + ' ' : '') + t; },
         end: stop,
-        error: stop,
+        error: function (code) {
+          stop();
+          if (code !== 'aborted') form.querySelector('[data-status]').textContent = VT.voiceError(code);
+        },
         unsupported: function () { form.querySelector('[data-status]').textContent = D.form.noVoice; }
       });
     });

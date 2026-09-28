@@ -188,8 +188,6 @@ export function certPage(c) {
         term: T('Plazo', 'Turnaround'),
         included: T('incluido', 'included'),
         listening: T('Escuchando… habla con normalidad.', 'Listening… speak normally.'),
-        noPerm: T('Sin permiso de micrófono. Puedes tocar las opciones.', 'No microphone permission. You can tap the options instead.'),
-        noUnderstand: T('No te hemos entendido. Prueba otra vez.', 'We didn’t catch that. Please try again.'),
         noVoice: T('Tu navegador no permite dictado. Prueba con Chrome, Edge o Safari, o toca las opciones.', 'Your browser doesn’t support dictation. Try Chrome, Edge or Safari, or tap the options.'),
         msgHead: T('Datos de la calculadora:', 'Calculator details:'),
         msgType: T('Inmueble', 'Property'),

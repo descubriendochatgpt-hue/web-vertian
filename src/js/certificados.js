@@ -101,8 +101,12 @@
         for (var k in o) S[k] = o[k];
         render();
       },
-      end: micOff,
-      error: function (e) { micOff(); hint.textContent = e === 'not-allowed' ? I.noPerm : I.noUnderstand; },
+      end: function () {
+        micOff();
+        // Si terminó sin oír nada ni dar error, vuelve el texto de ejemplo.
+        if (hint.textContent === I.listening) hint.textContent = D.voiceExample;
+      },
+      error: function (e) { micOff(); hint.textContent = e === 'aborted' ? D.voiceExample : VT.voiceError(e); },
       unsupported: function () { hint.textContent = I.noVoice; }
     });
   });

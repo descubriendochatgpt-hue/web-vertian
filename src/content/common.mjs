@@ -92,6 +92,17 @@ export const FORM_I18N = {
   fail: T('No se ha podido enviar. Inténtalo de nuevo o escríbenos por correo.', 'We couldn’t send it. Please try again or email us.'),
   noVoice: T('Tu navegador no permite dictado. Prueba con Chrome, Edge o Safari.', 'Your browser doesn’t support dictation. Try Chrome, Edge or Safari.'),
   subject: T('Nueva solicitud desde la web', 'New request from the website'),
+  // Formulario sin activar en FormSubmit (solo ocurre hasta que se confirma el correo de activación).
+  activation: T('El formulario aún no está activado. Revisa el correo de activación de FormSubmit en vertianmail@gmail.com.', 'The form isn’t activated yet. Check the FormSubmit activation email.'),
+  // Errores del dictado por voz, según el código que da el navegador.
+  voiceErr: {
+    'no-speech': T('No te hemos oído. Toca el micrófono y habla justo después.', 'We didn’t hear anything. Tap the microphone and speak straight away.'),
+    'network': T('El dictado de este navegador no funciona ahora mismo. Prueba en Chrome o Safari, o escríbelo.', 'Dictation isn’t working in this browser right now. Try Chrome or Safari, or type it.'),
+    'service-not-allowed': T('Este navegador no permite el dictado. Prueba en Chrome o Safari, o escríbelo.', 'This browser doesn’t allow dictation. Try Chrome or Safari, or type it.'),
+    'audio-capture': T('No encontramos ningún micrófono en este dispositivo.', 'We couldn’t find a microphone on this device.'),
+    'not-allowed': T('Sin permiso para usar el micrófono. Actívalo en el candado de la barra de direcciones.', 'No permission to use the microphone. Allow it from the padlock in the address bar.'),
+    'other': T('No te hemos entendido. Prueba otra vez.', 'We didn’t catch that. Please try again.'),
+  },
 };
 
 export const PENDING = {
