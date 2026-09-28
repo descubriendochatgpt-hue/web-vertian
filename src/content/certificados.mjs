@@ -48,7 +48,7 @@ export function certPage(c) {
       h1: c.h1,
       lead: c.lead,
       cta1: { href: '#precio', label: T('Calcular mi precio', 'Work out my price'), arrow: '→' },
-      img: { id: `${c.key}-hero`, ph: c.heroPh },
+      img: { id: `${c.key}-hero`, ph: c.heroPh, alt: c.heroAlt },
       facts: [
         { k: T('VISITA', 'VISIT'), v: '30–60 min' },
         { k: T('ENTREGA', 'DELIVERY'), v: T('≤ 5 días hábiles', '≤ 5 working days') },
@@ -89,7 +89,7 @@ export function certPage(c) {
       h: T('Una letra que tienes que enseñar para vender o alquilar.', 'A letter you must show to sell or rent.'),
       paras: [T('El certificado mide cuánta energía necesita el inmueble y cuánto CO₂ emite, y lo resume en una letra de la A a la G. Es obligatorio para vender o alquilar y la etiqueta debe aparecer en el anuncio. Toca una letra para ver qué significa.',
                 'The certificate measures how much energy the property needs and how much CO₂ it emits, and sums it up as a letter from A to G. It is mandatory to sell or rent, and the label must appear in the listing. Tap a letter to see what it means.')],
-      img: { id: `${c.key}-explica`, ph: c.explainPh, capR: c.figCap },
+      img: { id: `${c.key}-explica`, ph: c.explainPh, alt: c.explainAlt, capR: c.figCap },
       letters: true,
       letterAria: T('Escala de calificación energética', 'Energy rating scale'),
       letterWord: T('LETRA', 'RATING'),
@@ -277,6 +277,9 @@ export const alzira = certPage({
   lead: T('Vamos al inmueble, lo medimos, hacemos el cálculo con software oficial y lo registramos en la Comunitat Valenciana. Tú solo nos abres la puerta.', 'We visit the property, measure it, run the calculation with official software and register it with the Valencian Community. All you do is open the door.'),
   heroPh: T('Foto horizontal: técnico midiendo una vivienda en Alzira', 'Landscape photo: technician measuring a home in Alzira'),
   explainPh: T('Foto: fachada de edificio residencial en Alzira', 'Photo: residential building façade in Alzira'),
+  // De momento usa las fotos de Gijón, así que el texto alternativo no nombra la ciudad.
+  heroAlt: T('Técnico midiendo una vivienda', 'Technician measuring a home'),
+  explainAlt: T('Fachada de un edificio residencial', 'Residential building façade'),
   figCap: T('ALZIRA · VALENCIA', 'ALZIRA · VALENCIA'),
   zoneWord: T('Municipio', 'Town'),
   l2: T('02 · SUPERFICIE Y MUNICIPIO', '02 · AREA AND TOWN'),
