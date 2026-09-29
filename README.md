@@ -49,9 +49,9 @@ Solo necesita Node.js 18 o superior, sin instalar nada más.
 
 ## Formulario de contacto
 
-**Recomendado: con Supabase.** Sigue `supabase/INSTRUCCIONES.md` y pon la URL de tu proyecto en `supabaseUrl` de `src/site.config.mjs`. Así cada solicitud se guarda en la tabla «solicitudes» de Supabase, te llega un aviso y el cliente recibe la confirmación desde vertianmail@gmail.com.
+**Conectado al CRM.** Con `crmUrl` puesto en `src/site.config.mjs` (ahora `https://crm-vertian.vercel.app`), cada solicitud se guarda en el CRM: crea el cliente como «lead» (o lo reutiliza si su correo ya existe), abre una oportunidad en «Nuevo» y deja una nota con el mensaje y los datos de la calculadora. El CRM te avisa por correo y Telegram y envía al cliente la confirmación desde vertianmail@gmail.com. La configuración está en el repositorio del CRM (`docs/PEDIDOS_Y_WEB.md`).
 
-**Mientras `supabaseUrl` esté vacío** se usa FormSubmit, como se explica a continuación. Con FormSubmit las solicitudes solo quedan en tu correo; no se guardan en ningún otro sitio.
+**Si `crmUrl` está vacío** se usa FormSubmit, como se explica a continuación. Con FormSubmit las solicitudes solo quedan en tu correo.
 
 
 Los formularios envían las solicitudes a **vertianmail@gmail.com** mediante [FormSubmit](https://formsubmit.co), un servicio gratuito que no necesita servidor.

@@ -85,8 +85,8 @@ export const LEGAL = {
 <h2>5. A quién se comunican</h2>
 <p>No cedemos tus datos a terceros salvo obligación legal. Para funcionar usamos estos proveedores, que actúan como encargados del tratamiento:</p>
 <ul>
-${c.supabase
-  ? '<li><strong>Supabase Inc.</strong>: base de datos, alojada en la Unión Europea, donde guardamos cada solicitud.</li>\n  <li><strong>Google Ireland Ltd.</strong> (Gmail): servicio de correo con el que recibimos las solicitudes y te enviamos la confirmación.</li>'
+${c.crm
+  ? '<li><strong>Vercel Inc.</strong>: alojamiento de nuestro programa de gestión de clientes (CRM), que recibe el formulario.</li>\n  <li><strong>Supabase Inc.</strong>: base de datos del CRM, donde guardamos cada solicitud y los documentos que nos envíes.</li>\n  <li><strong>Google Ireland Ltd.</strong> (Gmail): servicio de correo con el que te enviamos la confirmación y nos comunicamos contigo.</li>\n  <li><strong>FormSubmit</strong> (formsubmit.co): solo si el CRM no está disponible, reenvía tu solicitud por correo para que no se pierda.</li>'
   : '<li><strong>FormSubmit</strong> (formsubmit.co): recibe el formulario, nos lo reenvía por correo y te envía la confirmación.</li>\n  <li><strong>Google Ireland Ltd.</strong> (Gmail): servicio de correo electrónico donde recibimos las solicitudes.</li>'}
   <li><strong>El proveedor de alojamiento de la web</strong>, que puede registrar tu dirección IP por motivos técnicos y de seguridad.</li>
 </ul>
@@ -119,8 +119,8 @@ ${c.supabase
 <h2>5. Who we share it with</h2>
 <p>We do not pass your data to third parties unless legally required. To operate, we use the following providers, acting as data processors:</p>
 <ul>
-${c.supabase
-  ? '<li><strong>Supabase Inc.</strong>: database, hosted in the European Union, where we store each request.</li>\n  <li><strong>Google Ireland Ltd.</strong> (Gmail): the email service we use to receive requests and send you the confirmation.</li>'
+${c.crm
+  ? '<li><strong>Vercel Inc.</strong>: hosting for our customer management software (CRM), which receives the form.</li>\n  <li><strong>Supabase Inc.</strong>: the CRM database, where we store each request and any documents you send us.</li>\n  <li><strong>Google Ireland Ltd.</strong> (Gmail): the email service we use to send you the confirmation and communicate with you.</li>\n  <li><strong>FormSubmit</strong> (formsubmit.co): only if the CRM is unavailable, it forwards your request by email so it isn’t lost.</li>'
   : '<li><strong>FormSubmit</strong> (formsubmit.co): receives the form, forwards it to us by email and sends you the confirmation.</li>\n  <li><strong>Google Ireland Ltd.</strong> (Gmail): the email service where we receive requests.</li>'}
   <li><strong>The website hosting provider</strong>, which may log your IP address for technical and security reasons.</li>
 </ul>

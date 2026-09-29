@@ -58,7 +58,7 @@
       '\n· ' + I.msgRate + ': ' + VT.eur(S.tarifa) +
       '\n· ' + I.msgHours + ': ' + c.horas + ' h' +
       '\n· ' + I.msgPayback + ': ' + c.meses + ' ' + (c.meses === 1 ? I.month : I.months);
-    VT.prefill(I.assessment, msg);
+    VT.prefill(I.assessment, msg, c.coste);
   });
 
   render();

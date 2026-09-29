@@ -50,7 +50,7 @@ function company(lang) {
     footAddress: c.address ? esc(c.address) : r(PENDING.footAddress, lang),
     footRegistry: c.registry ? esc(c.registry) : r(PENDING.footRegistry, lang),
     footCif: c.cif ? esc(c.cif) : r(PENDING.cif, lang),
-    supabase: !!SITE.supabaseUrl,
+    crm: !!SITE.crmUrl,
   };
 }
 
@@ -492,8 +492,10 @@ function renderPage(page, lang) {
   if (jsonld.address && COMPANY.address) jsonld.address.streetAddress = COMPANY.address;
 
   const data = {
-    lang, page: page.slug.es, endpoint: SITE.supabaseUrl ? `${SITE.supabaseUrl.replace(/\/+$/, '')}/functions/v1/contacto` : `https://formsubmit.co/ajax/${SITE.formEmail}`,
-    supabase: !!SITE.supabaseUrl,
+    lang, page: page.slug.es, endpoint: SITE.crmUrl ? `${SITE.crmUrl.replace(/\/+$/, '')}/api/publico/solicitud` : `https://formsubmit.co/ajax/${SITE.formEmail}`,
+    crm: !!SITE.crmUrl,
+    // Envío por correo (FormSubmit): sin CRM, o de respaldo si el CRM no responde.
+    respaldo: `https://formsubmit.co/ajax/${SITE.formEmail}`,
     form: r(FORM_I18N, lang),
     // Dirección que se indica al cliente en el correo de confirmación.
     contactEmail: COMPANY.email || SITE.formEmail,

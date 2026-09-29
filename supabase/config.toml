@@ -1,4 +1,0 @@
-# Solo lo necesario para desplegar con la CLI de Supabase (supabase functions deploy contacto).
-# La web llama a la función sin iniciar sesión, así que no se exige token.
-[functions.contacto]
-verify_jwt = false

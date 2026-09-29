@@ -9,10 +9,9 @@ export const SITE = {
   // La primera vez que alguien envíe el formulario llegará un correo de activación a esta dirección.
   formEmail: 'vertianmail@gmail.com',
 
-  // URL de tu proyecto de Supabase, p. ej. https://abcdefghijkl.supabase.co (ver supabase/INSTRUCCIONES.md).
-  // Cuando está puesta, cada solicitud se guarda en la tabla «solicitudes» de Supabase y el cliente
-  // recibe la confirmación desde tu Gmail. Vacía = se usa FormSubmit.
-  supabaseUrl: '',
+  // Dirección del CRM. Cada solicitud del formulario se guarda allí como cliente y oportunidad,
+  // y el CRM envía el aviso y la confirmación al cliente. Vacía = se usa FormSubmit.
+  crmUrl: 'https://crm-vertian.vercel.app',
 };
 
 export const COMPANY = {

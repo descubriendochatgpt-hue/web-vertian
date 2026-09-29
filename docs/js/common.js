@@ -33,8 +33,10 @@
   var VT = window.VT = { data: D, reduceMotion: reduceMotion };
 
   // Lleva los datos de una calculadora al formulario y baja hasta él.
-  VT.prefill = function (servicio, mensaje) {
+  VT.prefill = function (servicio, mensaje, importe) {
     if (!form) return;
+    // Importe orientativo de la calculadora: llega al CRM como valor de la oportunidad
+    if (importe) form.dataset.importe = String(importe); else delete form.dataset.importe;
     var sel = form.elements.servicio;
     for (var i = 0; i < sel.options.length; i++) if (sel.options[i].value === servicio) sel.selectedIndex = i;
     form.elements.mensaje.value = mensaje;
@@ -67,21 +69,29 @@
         idioma: D.lang,
         privacidad: 'aceptada'
       };
-      var peticion;
-      if (D.supabase) {
-        // Función «contacto» de Supabase: guarda la solicitud y envía los dos correos desde Gmail.
-        datos.web = f.web.value;
-        peticion = fetch(D.endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(datos) });
-      } else {
-        // FormSubmit: reenvía la solicitud por correo y manda la confirmación al cliente.
-        datos._subject = F.subject + ' · ' + D.page;
-        datos._autoresponse = F.autoreply
-          .replace('{nombre}', datos.nombre)
-          .replace('{servicio}', datos.servicio)
+      // FormSubmit: reenvía la solicitud por correo y manda la confirmación al cliente.
+      var porCorreo = function () {
+        var d = {};
+        for (var k in datos) if (k !== 'web' && k !== 'importe') d[k] = datos[k];
+        d._subject = F.subject + ' · ' + D.page;
+        d._autoresponse = F.autoreply
+          .replace('{nombre}', d.nombre)
+          .replace('{servicio}', d.servicio)
           .replace('{correo}', D.contactEmail);
-        datos._template = 'table';
-        datos._captcha = 'false';
-        peticion = fetch(D.endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(datos) });
+        d._template = 'table';
+        d._captcha = 'false';
+        return fetch(D.respaldo, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(d) });
+      };
+      var peticion;
+      if (D.crm) {
+        // CRM: guarda al cliente y la oportunidad, y envía el aviso y la confirmación.
+        datos.web = f.web.value;
+        if (form.dataset.importe) datos.importe = Number(form.dataset.importe);
+        // Si el CRM no responde (caído o sin publicar), la solicitud sale por correo: no se pierde.
+        peticion = fetch(D.endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(datos) })
+          .then(function (res) { return res.status >= 500 || res.status === 404 ? porCorreo() : res; }, porCorreo);
+      } else {
+        peticion = porCorreo();
       }
       peticion.then(function (res) {
         return res.json().catch(function () { return {}; }).then(function (j) {
@@ -91,6 +101,7 @@
         say('sent', F.sent);
         ['nombre', 'email', 'telefono', 'mensaje'].forEach(function (k) { f[k].value = ''; });
         f.privacidad.checked = false;
+        delete form.dataset.importe;
       }).catch(function (err) {
         // El motivo queda en la consola del navegador para poder diagnosticarlo.
         if (window.console) console.error('Formulario no enviado:', err && err.message);

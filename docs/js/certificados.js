@@ -66,7 +66,7 @@
       '\n· ' + I.msgReason + ': ' + I.motivos[S.motivo] +
       '\n· ' + I.msgTerm + ': ' + (S.urgente ? I.msgUrgent : I.msgNormal) +
       '\n· ' + I.msgPrice + ': ' + p.total + ' ' + I.vat;
-    VT.prefill(p.t.svc, msg);
+    VT.prefill(p.t.svc, msg, p.total);
   });
 
   // ---------- Escala de letras ----------
