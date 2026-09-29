@@ -27,5 +27,4 @@ export const COMPANY = {
   email: 'vertianmail@gmail.com', // correo público de contacto
   insurer: '',        // aseguradora de responsabilidad civil
   policy: '',         // número de póliza
-  founded: '',        // año de fundación
 };

@@ -101,13 +101,6 @@ export const afiliados = {
   company: {
     num: T('06 · LA EMPRESA', '06 · THE COMPANY'),
     p2: T('Todavía no tenemos una cartera larga de clientes, así que no te pedimos que nos creas. Te enseñamos los números y te dejamos irte cuando quieras.', 'We don’t have a long client list yet, so we don’t ask you to take our word for it. We show you the numbers and let you leave whenever you want.'),
-    person: {
-      img: { id: 'afiliados-responsable', ph: T('Retrato del responsable', 'Account manager portrait') },
-      label: T('QUIÉN LLEVA TU CUENTA', 'WHO RUNS YOUR ACCOUNT'),
-      name: T('[Nombre y apellidos]', '[Full name]'),
-      role: T('[Cargo] · [Formación o certificaciones]', '[Role] · [Training or certifications]'),
-      bio: T('[Dos líneas sobre tu experiencia en marketing y analítica.]', '[Two lines about your experience in marketing and analytics.]'),
-    },
     extraRows: [],
     nots: [
       T('Comprar seguidores ni tráfico falso.', 'Buying followers or fake traffic.'),

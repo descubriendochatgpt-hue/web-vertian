@@ -103,13 +103,6 @@ export const ia = {
   company: {
     num: T('06 · LA EMPRESA', '06 · THE COMPANY'),
     p2: T('Todavía no tenemos una cartera larga de clientes, así que no te pedimos que nos creas. Te decimos cuántas horas vas a ahorrar y luego lo medimos delante de ti.', 'We don’t have a long client list yet, so we don’t ask you to take our word for it. We tell you how many hours you’ll save and then measure it in front of you.'),
-    person: {
-      img: { id: 'ia-responsable', ph: T('Retrato del responsable', 'Project lead portrait') },
-      label: T('QUIÉN HACE TU PROYECTO', 'WHO BUILDS YOUR PROJECT'),
-      name: T('[Nombre y apellidos]', '[Full name]'),
-      role: T('[Cargo] · [Formación o certificaciones]', '[Role] · [Training or certifications]'),
-      bio: T('[Dos líneas sobre tu experiencia en desarrollo y automatización.]', '[Two lines about your experience in development and automation.]'),
-    },
     extraRows: [],
     nots: [
       T('Vender «IA» donde basta una hoja de cálculo.', 'Selling “AI” where a spreadsheet will do.'),

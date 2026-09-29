@@ -46,7 +46,6 @@ function company(lang) {
     insurance: `${c.insurer ? esc(c.insurer) : p('insurer')} · ${r(COMPANY_SECTION.policyWord, lang)} ${c.policy ? esc(c.policy) : p('policy')}`,
     phone: c.phone ? `<a href="tel:${esc(c.phone.replace(/\s/g, ''))}">${esc(c.phone)}</a>` : p('phone'),
     email: c.email ? `<a href="mailto:${esc(c.email)}">${esc(c.email)}</a>` : p('email'),
-    year: c.founded ? esc(c.founded) : p('year'),
     footAddress: c.address ? esc(c.address) : r(PENDING.footAddress, lang),
     footRegistry: c.registry ? esc(c.registry) : r(PENDING.footRegistry, lang),
     footCif: c.cif ? esc(c.cif) : r(PENDING.cif, lang),
@@ -351,7 +350,7 @@ const guarantees = g => `
 </section>`;
 
 function companySec(c, lang, base) {
-  const S = r(COMPANY_SECTION, lang), C = company(lang), P = c.person;
+  const S = r(COMPANY_SECTION, lang), C = company(lang);
   const rows = [
     [S.rows.name, C.name], [S.rows.cif, `<span class="mono">${C.cif}</span>`], [S.rows.address, C.address],
     [S.rows.registry, C.registry], [S.rows.insurance, C.insurance], ...c.extraRows, [S.rows.data, S.dataText],
@@ -361,17 +360,7 @@ function companySec(c, lang, base) {
   <div class="two-col rule-top">
     <div>
       ${sectionHead(c.num, S.h, 'h-empresa')}
-      <p class="body-p" style="margin-top:20px">${S.p1.replace('{year}', C.year)}</p>
-      <p class="body-p" style="margin-top:14px">${c.p2}</p>
-      <div class="person">
-        ${slot(P.img, 'slot-portrait', base, lang)}
-        <div>
-          <div class="label-sm">${P.label}</div>
-          <div class="name">${P.name}</div>
-          <div class="role">${P.role}</div>
-          <p>${P.bio}</p>
-        </div>
-      </div>
+      ${[...S.historia, c.p2].map((t, i) => `<p class="body-p" style="margin-top:${i ? 14 : 20}px">${t}</p>`).join('\n      ')}
     </div>
     <div>
       <div class="label-sm" style="margin-bottom:10px">${S.factsLabel}</div>

@@ -126,13 +126,6 @@ export function certPage(c) {
     company: {
       num: T('07 · LA EMPRESA', '07 · THE COMPANY'),
       p2: T('Todavía no tenemos una cartera larga de clientes, así que no te pedimos que nos creas. Te damos datos que puedes comprobar antes de contratar.', 'We don’t have a long client list yet, so we don’t ask you to take our word for it. We give you facts you can check before hiring us.'),
-      person: {
-        img: { id: `${c.key}-tecnico`, ph: T('Retrato del técnico', 'Technician portrait') },
-        label: T('QUIÉN HACE TU CERTIFICADO', 'WHO DOES YOUR CERTIFICATE'),
-        name: T('[Nombre y apellidos]', '[Full name]'),
-        role: T('[Titulación] · Colegiado n.º [0000]', '[Qualification] · Registration no. [0000]'),
-        bio: T('[Dos líneas sobre tu experiencia en edificación y eficiencia energética.]', '[Two lines about your experience in building and energy efficiency.]'),
-      },
       extraRows: [[T('SOFTWARE', 'SOFTWARE'), T('Programas reconocidos por el Ministerio (CE3X, HULC o CYPETHERM)', 'Ministry-approved programs (CE3X, HULC or CYPETHERM)')]],
       nots: [
         T('Certificados sin visita al inmueble.', 'Certificates without visiting the property.'),

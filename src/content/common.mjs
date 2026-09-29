@@ -40,8 +40,14 @@ export const COMMIT = (feeText) => [
 
 export const COMPANY_SECTION = {
   h: T('Una empresa nueva, con los datos a la vista.', 'A new company, with everything on the table.'),
-  p1: T('VERTIAN SOLUTIONS nace en {year} con una idea sencilla: medir antes de empezar y decir lo que cuesta. El nombre viene del vernier, la escala del calibre que permite leer décimas de milímetro donde a simple vista solo hay una raya.',
-        'VERTIAN SOLUTIONS was founded in {year} on a simple idea: measure before starting and say what it costs. The name comes from the vernier, the calliper scale that lets you read tenths of a millimetre where the naked eye sees a single line.'),
+  historia: [
+    T('VERTIAN SOLUTIONS nace de una idea sencilla: medir antes de empezar y decir lo que cuesta. El nombre viene del vernier, la escala del calibre que permite leer décimas de milímetro donde a simple vista solo hay una raya. Así queremos trabajar: mirar de cerca y con datos antes de dar una cifra.',
+      'VERTIAN SOLUTIONS was born from a simple idea: measure before starting and say what it costs. The name comes from the vernier, the calliper scale that lets you read tenths of a millimetre where the naked eye sees a single line. That is how we want to work: look closely, with data, before giving a figure.'),
+    T('Hacemos tres cosas que parecen distintas y tienen el mismo fondo: certificados energéticos, marketing de afiliados y aplicaciones con automatización. En las tres, quien nos contrata necesita saber qué va a recibir, cuánto le va a costar y cómo comprobar el resultado. En un certificado es una letra de la A a la G; en afiliación, lo que entra cada mes en tu cuenta; en una automatización, las horas que vuelven a tu semana.',
+      'We do three things that look different but share the same core: energy certificates, affiliate marketing, and apps with automation. In all three, whoever hires us needs to know what they will get, what it will cost and how to check the result. In a certificate it is a letter from A to G; in affiliate marketing, what lands in your account each month; in an automation, the hours that come back to your week.'),
+    T('Somos una empresa pequeña y lo decimos sin rodeos. Hablas con quien hace el trabajo, no con una centralita. Preferimos un presupuesto cerrado a una sorpresa en la factura, y un informe que se entienda a uno que impresione. Trabajamos en persona en Gijón y en la Ribera Alta, y en remoto para toda España.',
+      'We are a small company and we say so plainly. You talk to the person doing the work, not to a switchboard. We prefer a fixed quote to a surprise on the invoice, and a report you can understand to one that tries to impress. We work in person in Gijón and the Ribera Alta, and remotely across Spain.'),
+  ],
   factsLabel: T('FICHA VERIFICABLE', 'VERIFIABLE DETAILS'),
   notsLabel: T('LO QUE NO HACEMOS', 'WHAT WE DON’T DO'),
   rows: {
@@ -115,7 +121,6 @@ export const PENDING = {
   policy: T('[0000]', '[0000]'),
   phone: T('[+34 000 000 000]', '[+34 000 000 000]'),
   email: T('[correo de contacto]', '[contact email]'),
-  year: T('[año]', '[year]'),
   footAddress: T('[Domicilio social pendiente]', '[Registered office pending]'),
   footRegistry: T('[Registro Mercantil pendiente]', '[Registry details pending]'),
 };
