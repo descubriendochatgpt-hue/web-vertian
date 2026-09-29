@@ -30,7 +30,7 @@ export const afiliados = {
     h1: T('Medimos lo que <em>ingresa</em>, no lo que gusta.', 'We measure what <em>earns</em>, not what gets likes.'),
     lead: T('Elegimos los programas de afiliación que encajan con tu público, creamos el contenido que convierte y seguimos cada comisión. Cada mes ves ingresos, coste y margen.', 'We pick the affiliate programs that fit your audience, create content that converts and track every commission. Each month you see revenue, cost and margin.'),
     cta1: { href: '#panel', label: T('Ver el panel', 'See the dashboard'), arrow: '↓' },
-    img: { id: 'afiliados-hero', pos: '38% 35%', alt: T('Creadora de contenido trabajando junto a un panel de métricas', 'Content creator working next to a metrics dashboard'), ph: T('Foto horizontal: pantalla con métricas o persona creando contenido', 'Landscape photo: screen with metrics or a person creating content') },
+    img: { id: 'afiliados-hero', pos: '38% 35%', alt: T('Creadora de contenido trabajando en su escritorio, con micrófono y cámara', 'Content creator working at her desk with a microphone and camera'), ph: T('Foto horizontal: pantalla con métricas o persona creando contenido', 'Landscape photo: screen with metrics or a person creating content') },
     facts: [
       { k: T('MODALIDAD', 'FORMAT'), v: T('Remoto', 'Remote') },
       { k: T('INFORME', 'REPORT'), v: T('Mensual', 'Monthly') },
