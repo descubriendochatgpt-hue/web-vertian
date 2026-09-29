@@ -88,8 +88,21 @@
         datos.web = f.web.value;
         if (form.dataset.importe) datos.importe = Number(form.dataset.importe);
         // Si el CRM no responde (caído o sin publicar), la solicitud sale por correo: no se pierde.
-        peticion = fetch(D.endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(datos) })
-          .then(function (res) { return res.status >= 500 || res.status === 404 ? porCorreo() : res; }, porCorreo);
+        // Como mucho 15 s de espera; el motivo del respaldo queda en la consola del navegador.
+        var ctl = window.AbortController ? new AbortController() : null;
+        var espera = ctl && setTimeout(function () { ctl.abort(); }, 15000);
+        var respaldo = function (motivo) {
+          if (window.console) console.warn('CRM no disponible (' + motivo + '): la solicitud se envía por correo.');
+          return porCorreo();
+        };
+        peticion = fetch(D.endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(datos), signal: ctl ? ctl.signal : undefined })
+          .then(function (res) {
+            clearTimeout(espera);
+            return res.status >= 500 || res.status === 404 ? respaldo('HTTP ' + res.status) : res;
+          }, function (err) {
+            clearTimeout(espera);
+            return respaldo(err && err.name === 'AbortError' ? 'sin respuesta en 15 s' : 'conexión rechazada; revisa ORIGENES_WEB en Vercel');
+          });
       } else {
         peticion = porCorreo();
       }
