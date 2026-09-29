@@ -118,7 +118,8 @@
       }).catch(function (err) {
         // El motivo queda en la consola del navegador para poder diagnosticarlo.
         if (window.console) console.error('Formulario no enviado:', err && err.message);
-        say('error', /activat/i.test(err && err.message) ? F.activation : F.fail);
+        var motivo = (err && err.message) || '';
+        say('error', /activat/i.test(motivo) ? F.activation : /limite|429/.test(motivo) ? F.limit : /datos|400/.test(motivo) ? F.check : F.fail);
       }).then(function () { submit.disabled = false; });
     });
   }

@@ -88,6 +88,7 @@ export const FORM_I18N = {
   privacy: T('Tienes que aceptar la política de privacidad.', 'You need to accept the privacy policy.'),
   sending: T('Enviando…', 'Sending…'),
   fail: T('No se ha podido enviar. Inténtalo de nuevo o escríbenos por correo.', 'We couldn’t send it. Please try again or email us.'),
+  limit: T('Ya hemos recibido varias solicitudes tuyas en la última hora. Te responderemos pronto; si es urgente, escríbenos por correo.', 'We’ve already received several requests from you in the last hour. We’ll reply soon; if it’s urgent, please email us.'),
   subject: T('Nueva solicitud desde la web', 'New request from the website'),
   // Correo automático que recibe el cliente al enviar el formulario.
   // {nombre}, {servicio} y {correo} se sustituyen al enviar.
