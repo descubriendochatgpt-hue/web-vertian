@@ -16,6 +16,10 @@ export const SITE = {
 
   // Sección «Opiniones de clientes». Oculta hasta tener reseñas reales con permiso para publicarlas.
   mostrarOpiniones: false,
+
+  // Asistente (chat) con IA en cada página. Responde el CRM; el chat solo aparece si en el CRM
+  // está puesta la clave de Claude y el asistente de esa página está activo.
+  asistente: true,
 };
 
 export const COMPANY = {

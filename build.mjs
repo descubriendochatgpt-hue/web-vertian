@@ -5,7 +5,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { SITE, COMPANY } from './src/site.config.mjs';
-import { resolve, UI, COMPANY_SECTION, REVIEWS, CONTACT, FORM_I18N, PENDING } from './src/content/common.mjs';
+import { resolve, UI, COMPANY_SECTION, REVIEWS, CONTACT, FORM_I18N, PENDING, CHAT_I18N } from './src/content/common.mjs';
 import { gijon, alzira } from './src/content/certificados.mjs';
 import { afiliados } from './src/content/afiliados.mjs';
 import { ia } from './src/content/ia.mjs';
@@ -498,6 +498,19 @@ function renderPage(page, lang) {
     contactEmail: COMPANY.email || SITE.formEmail,
     ...(p.js || {}),
   };
+  // Asistente (chat): solo con CRM. La web pregunta al CRM si está activo antes de enseñarlo.
+  const asistente = { 'certificado-energetico-gijon': 'certificados-gijon', 'certificado-energetico-alzira': 'certificados-alzira', 'marketing-de-afiliados': 'afiliados', 'apps-automatizacion-ia': 'apps-ia' }[page.slug.es];
+  if (SITE.crmUrl && SITE.asistente && asistente) {
+    const { suggestions, ...textos } = r(CHAT_I18N, lang);
+    data.chat = {
+      endpoint: `${SITE.crmUrl.replace(/\/+$/, '')}/api/publico/chat`,
+      asistente,
+      i18n: textos,
+      sugerencias: suggestions[asistente],
+      privacidad: links.privacy,
+      tel: COMPANY.phone,
+    };
+  }
 
   let main = hero(p.hero, lang, base) + commit(p.commit, lang);
   if (page.type === 'cert') main += certCalc(p.calc, p.js, lang);
@@ -516,7 +529,8 @@ function renderPage(page, lang) {
     + footer(lang, links, p.footer.tagline, p.footer.tag, base)
     + `\n<script type="application/json" id="vt-data">${JSON.stringify(data).replace(/</g, '\\u003c')}</script>
 <script src="${base}js/common.js" defer></script>
-<script src="${base}js/${script}.js" defer></script>
+<script src="${base}js/${script}.js" defer></script>${data.chat ? `
+<script src="${base}js/chat.js" defer></script>` : ''}
 </body>
 </html>
 `;

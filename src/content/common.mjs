@@ -124,3 +124,45 @@ export const PENDING = {
   footAddress: T('[Domicilio social pendiente]', '[Registered office pending]'),
   footRegistry: T('[Registro Mercantil pendiente]', '[Registry details pending]'),
 };
+
+// Asistente (chat) de cada página. Responde el CRM con Claude y la base de conocimiento de cada página.
+export const CHAT_I18N = {
+  open: T('¿Dudas? Pregunta', 'Questions? Ask'),
+  title: T('Asistente VERTIAN', 'VERTIAN assistant'),
+  tag: T('RESPUESTAS AUTOMÁTICAS · IA', 'AUTOMATED ANSWERS · AI'),
+  close: T('Cerrar el asistente', 'Close the assistant'),
+  hello: T(
+    'Hola. Soy el asistente automático de VERTIAN. Te respondo con la información de esta página; si no sé algo, te digo cómo hablar con el equipo. ¿En qué te ayudo?',
+    'Hi. I’m VERTIAN’s automated assistant. I answer with the information on this page; if I don’t know something, I’ll tell you how to reach the team. How can I help?'),
+  placeholder: T('Escribe tu pregunta…', 'Type your question…'),
+  send: T('Enviar', 'Send'),
+  writing: T('Escribiendo…', 'Typing…'),
+  notice: T(
+    'Asistente con inteligencia artificial: puede equivocarse, el precio definitivo te lo confirmamos por escrito. No compartas datos sensibles. Guardamos la conversación para mejorar el servicio.',
+    'AI assistant: it may make mistakes; we confirm the final price in writing. Don’t share sensitive data. We keep the conversation to improve our service.'),
+  privacy: T('Privacidad', 'Privacy'),
+  contact: T('Hablar con una persona', 'Talk to a person'),
+  fail: T('No se ha podido conectar. Escríbenos a {correo} o llama al {tel}.', 'Couldn’t connect. Email us at {correo} or call {tel}.'),
+  suggestions: {
+    'certificados-gijon': [
+      T('¿Cuánto cuesta para un piso?', 'How much for a flat?'),
+      T('¿Tengo que estar en la visita?', 'Do I need to be at the visit?'),
+      T('¿Cuánto tardáis?', 'How long does it take?'),
+    ],
+    'certificados-alzira': [
+      T('¿Cuánto cuesta para un piso?', 'How much for a flat?'),
+      T('¿Trabajáis en Algemesí?', 'Do you work in Algemesí?'),
+      T('¿Qué documentos necesito?', 'What documents do I need?'),
+    ],
+    afiliados: [
+      T('¿Cómo funciona?', 'How does it work?'),
+      T('¿Hay permanencia?', 'Is there a minimum term?'),
+      T('¿Necesito una web?', 'Do I need a website?'),
+    ],
+    'apps-ia': [
+      T('¿Qué podéis automatizar?', 'What can you automate?'),
+      T('¿Cuánto cuesta?', 'How much does it cost?'),
+      T('¿Dónde están mis datos?', 'Where is my data stored?'),
+    ],
+  },
+};

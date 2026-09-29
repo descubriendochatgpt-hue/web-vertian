@@ -12,6 +12,7 @@ const proveedores = {
           '<li><strong>Supabase Inc.</strong>: base de datos del CRM, donde guardamos las solicitudes, los pedidos y los documentos que nos envíes.</li>',
           '<li><strong>Google Ireland Ltd.</strong> (Gmail): correo electrónico con el que te enviamos la confirmación y nos comunicamos contigo.</li>',
           '<li><strong>Telegram Messenger Inc.</strong>: aviso interno a nuestro equipo de cada nueva solicitud.</li>',
+          '<li><strong>Anthropic, PBC</strong> (Claude): genera las respuestas del asistente automático de la web a partir del texto de la conversación. Según sus condiciones comerciales, no usa estas conversaciones para entrenar sus modelos.</li>',
           '<li><strong>FormSubmit</strong> (formsubmit.co): solo si el CRM no está disponible, reenvía tu solicitud por correo para que no se pierda.</li>',
         ]
       : [
@@ -27,6 +28,7 @@ const proveedores = {
           '<li><strong>Supabase Inc.</strong>: the CRM database, where we store requests, orders and any documents you send us.</li>',
           '<li><strong>Google Ireland Ltd.</strong> (Gmail): the email service we use to send you the confirmation and communicate with you.</li>',
           '<li><strong>Telegram Messenger Inc.</strong>: internal notification to our team of each new request.</li>',
+          '<li><strong>Anthropic, PBC</strong> (Claude): generates the answers of the website’s automated assistant from the text of the conversation. Under its commercial terms, it does not use these conversations to train its models.</li>',
           '<li><strong>FormSubmit</strong> (formsubmit.co): only if the CRM is unavailable, it forwards your request by email so it isn’t lost.</li>',
         ]
       : [
@@ -151,7 +153,8 @@ export const LEGAL = {
   <tr><th>Finalidad</th><th>Datos tratados</th><th>Base legal</th><th>Plazo de conservación</th></tr>
   <tr><td>Atender consultas enviadas mediante el formulario de contacto, email o teléfono</td><td>Nombre, email, teléfono, contenido del mensaje y datos de la calculadora</td><td>Consentimiento del interesado (art. 6.1.a RGPD)</td><td>Durante el tiempo necesario para atender la consulta y, después, durante los plazos legales de prescripción</td></tr>
   <tr><td>Prestación de servicios y gestión de clientes, incluidos los pedidos hechos con el enlace de pedidos del cliente</td><td>Datos identificativos, de contacto y de facturación; datos del encargo (por ejemplo, del inmueble) y documentos que nos envíes</td><td>Ejecución de un contrato (art. 6.1.b RGPD)</td><td>Duración de la relación contractual y, después, los plazos legales aplicables</td></tr>
-  <tr><td>Cumplimiento de obligaciones fiscales y contables</td><td>Datos de facturación</td><td>Obligación legal (art. 6.1.c RGPD)</td><td>Mínimo 6 años (Código de Comercio) y hasta 4 años (normativa tributaria)</td></tr>
+${c.crm ? `  <tr><td>Responder a tus preguntas con el asistente automático (chat) de la web y mejorar sus respuestas</td><td>Las preguntas y respuestas de la conversación, la página y el idioma, y un identificador cifrado de tu conexión que solo sirve para limitar el número de preguntas. No guardamos tu dirección IP.</td><td>Consentimiento del interesado, al usar voluntariamente el asistente (art. 6.1.a RGPD)</td><td>12 meses; después se borran automáticamente</td></tr>
+` : ''}  <tr><td>Cumplimiento de obligaciones fiscales y contables</td><td>Datos de facturación</td><td>Obligación legal (art. 6.1.c RGPD)</td><td>Mínimo 6 años (Código de Comercio) y hasta 4 años (normativa tributaria)</td></tr>
 </table>
 <p>No enviamos comunicaciones comerciales sin tu consentimiento expreso, no usamos herramientas de analítica web y no tomamos decisiones automatizadas ni elaboramos perfiles con tus datos.</p>
 <h2>3. Veracidad de los datos</h2>
@@ -197,7 +200,8 @@ export const LEGAL = {
   <tr><th>Purpose</th><th>Data processed</th><th>Legal basis</th><th>Retention period</th></tr>
   <tr><td>Answering enquiries sent through the contact form, email or phone</td><td>Name, email, phone, message content and calculator details</td><td>Consent of the data subject (Art. 6(1)(a) GDPR)</td><td>As long as needed to answer the enquiry and then for the statutory limitation periods</td></tr>
   <tr><td>Providing services and managing clients, including orders placed with the client’s order link</td><td>Identification, contact and billing data; details of the job (for example, the property) and documents you send us</td><td>Performance of a contract (Art. 6(1)(b) GDPR)</td><td>For the duration of the contract and then for the applicable statutory periods</td></tr>
-  <tr><td>Meeting tax and accounting obligations</td><td>Billing data</td><td>Legal obligation (Art. 6(1)(c) GDPR)</td><td>At least 6 years (Commercial Code) and up to 4 years (tax law)</td></tr>
+${c.crm ? `  <tr><td>Answering your questions with the website’s automated assistant (chat) and improving its answers</td><td>The questions and answers in the conversation, the page and language, and an encrypted identifier of your connection used only to limit the number of questions. We do not store your IP address.</td><td>Consent of the data subject, by voluntarily using the assistant (Art. 6(1)(a) GDPR)</td><td>12 months; then deleted automatically</td></tr>
+` : ''}  <tr><td>Meeting tax and accounting obligations</td><td>Billing data</td><td>Legal obligation (Art. 6(1)(c) GDPR)</td><td>At least 6 years (Commercial Code) and up to 4 years (tax law)</td></tr>
 </table>
 <p>We do not send marketing without your express consent, we do not use web analytics tools, and we do not make automated decisions or build profiles from your data.</p>
 <h2>3. Accuracy of data</h2>
@@ -243,6 +247,7 @@ export const LEGAL = {
 <table>
   <tr><th>Nombre</th><th>Titular</th><th>Finalidad</th><th>Duración</th><th>Tipo</th></tr>
   <tr><td>vt-lang</td><td>Propia</td><td>Recordar el idioma elegido (español o inglés)</td><td>Hasta que lo borres</td><td>Técnica (almacenamiento local, exenta de consentimiento)</td></tr>
+  <tr><td>vt-chat-…</td><td>Propia</td><td>Mantener la conversación con el asistente mientras navegas por la página</td><td>Se borra al cerrar la pestaña</td><td>Técnica (almacenamiento de sesión, exenta de consentimiento)</td></tr>
 </table>
 <p>Al ser estrictamente necesaria, está exenta del deber de consentimiento según el artículo 22.2 de la LSSI-CE. Por eso la web no muestra un banner de cookies. Si en el futuro se añaden cookies de analítica o publicidad, se pedirá tu consentimiento antes de instalarlas, con opción de aceptar y rechazar con la misma facilidad.</p>
 <h2>3. Cómo gestionar o eliminar las cookies</h2>
@@ -261,6 +266,7 @@ export const LEGAL = {
 <table>
   <tr><th>Name</th><th>Owner</th><th>Purpose</th><th>Duration</th><th>Type</th></tr>
   <tr><td>vt-lang</td><td>First party</td><td>Remembers the chosen language (Spanish or English)</td><td>Until you clear it</td><td>Technical (local storage, exempt from consent)</td></tr>
+  <tr><td>vt-chat-…</td><td>First party</td><td>Keeps your conversation with the assistant while you browse the page</td><td>Deleted when you close the tab</td><td>Technical (session storage, exempt from consent)</td></tr>
 </table>
 <p>As it is strictly necessary, it is exempt from the consent requirement under Article 22.2 of Spain’s LSSI-CE, which is why the website shows no cookie banner. If analytics or advertising cookies are added in the future, your consent will be requested before setting them, with the option to accept or reject just as easily.</p>
 <h2>3. How to manage or delete cookies</h2>
