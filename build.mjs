@@ -485,6 +485,13 @@ const legalLinks = (lang, base) => ({
 
 function renderPage(page, lang) {
   const p = r(page, lang);
+  // Sin opiniones: fuera la sección y su enlace del menú
+  if (!SITE.mostrarOpiniones) p.nav = p.nav.filter((n) => n.href !== '#opiniones');
+  // Numeración de las secciones (01, 02…) según las que se muestran, sin saltos
+  [p.calc ?? p.panel, p.services, p.explain, page.type === 'cert' ? p.zone : null, p.process, p.guarantees,
+    p.company, SITE.mostrarOpiniones ? p.reviews : null, p.faq, p.contact]
+    .filter(Boolean)
+    .forEach((s, i) => { s.num = s.num.replace(/^\d+/, pad2(i)); });
   const slug = page.slug[lang], alt = page.slug[lang === 'es' ? 'en' : 'es'];
   const base = up(slug);
   const altHref = `${base}${alt}/${IDX}`;
@@ -510,7 +517,7 @@ function renderPage(page, lang) {
   main += services(p.services, lang) + explain(p.explain, lang, base);
   if (page.type === 'cert') main += zone(p.zone, p.js);
   main += process_(p.process) + guarantees(p.guarantees) + companySec(p.company, lang, base)
-    + reviews(p.reviews, lang) + faq(p.faq) + contact(p.contact, lang, links);
+    + (SITE.mostrarOpiniones ? reviews(p.reviews, lang) : '') + faq(p.faq) + contact(p.contact, lang, links);
 
   const script = { cert: 'certificados', afiliados: 'afiliados', ia: 'ia' }[page.type];
   return head({ lang, title: p.meta.title, description: p.meta.description, slug, alt, base, theme: p.theme, jsonld,

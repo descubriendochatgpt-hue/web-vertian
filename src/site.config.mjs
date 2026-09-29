@@ -13,6 +13,9 @@ export const SITE = {
   // Dirección del CRM. Cada solicitud del formulario se guarda allí como cliente y oportunidad,
   // y el CRM envía el aviso y la confirmación al cliente. Vacía = se usa FormSubmit.
   crmUrl: 'https://crm-vertian.vercel.app',
+
+  // Sección «Opiniones de clientes». Oculta hasta tener reseñas reales con permiso para publicarlas.
+  mostrarOpiniones: false,
 };
 
 export const COMPANY = {
