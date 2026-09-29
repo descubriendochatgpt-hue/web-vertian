@@ -13,6 +13,8 @@ const proveedores = {
           '<li><strong>Google Ireland Ltd.</strong> (Gmail): correo electrónico con el que te enviamos la confirmación y nos comunicamos contigo.</li>',
           '<li><strong>Telegram Messenger Inc.</strong>: aviso interno a nuestro equipo de cada nueva solicitud.</li>',
           '<li><strong>Anthropic, PBC</strong> (Claude): genera las respuestas del asistente automático de la web a partir del texto de la conversación. Según sus condiciones comerciales, no usa estas conversaciones para entrenar sus modelos.</li>',
+          '<li><strong>Stripe Payments Europe, Ltd.</strong>: procesa los pagos con tarjeta. Los datos de la tarjeta los recibe Stripe directamente; nosotros no los vemos.</li>',
+          '<li><strong>WhatsApp Ireland Ltd.</strong>: solo si decides escribirnos por WhatsApp.</li>',
           '<li><strong>FormSubmit</strong> (formsubmit.co): solo si el CRM no está disponible, reenvía tu solicitud por correo para que no se pierda.</li>',
         ]
       : [
@@ -29,6 +31,8 @@ const proveedores = {
           '<li><strong>Google Ireland Ltd.</strong> (Gmail): the email service we use to send you the confirmation and communicate with you.</li>',
           '<li><strong>Telegram Messenger Inc.</strong>: internal notification to our team of each new request.</li>',
           '<li><strong>Anthropic, PBC</strong> (Claude): generates the answers of the website’s automated assistant from the text of the conversation. Under its commercial terms, it does not use these conversations to train its models.</li>',
+          '<li><strong>Stripe Payments Europe, Ltd.</strong>: processes card payments. Card details go directly to Stripe; we never see them.</li>',
+          '<li><strong>WhatsApp Ireland Ltd.</strong>: only if you choose to message us on WhatsApp.</li>',
           '<li><strong>FormSubmit</strong> (formsubmit.co): only if the CRM is unavailable, it forwards your request by email so it isn’t lost.</li>',
         ]
       : [

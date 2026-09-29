@@ -79,6 +79,7 @@
 
     document.body.appendChild(panel);
     document.body.appendChild(boton);
+    document.documentElement.classList.add('tiene-chat');
   }
 
   function mostrar(si) {

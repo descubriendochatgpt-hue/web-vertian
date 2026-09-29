@@ -408,7 +408,12 @@ const faq = f => `
   </div>
 </section>`;
 
-function contact(c, lang, links) {
+// Enlace de WhatsApp con un mensaje ya escrito que dice desde qué página escribe.
+const enlaceWhatsapp = (lang, pagina) =>
+  `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(r(CONTACT, lang).waMsg.replace('{pagina}', pagina))}`;
+const ICONO_WA = '<svg viewBox="0 0 32 32" width="26" height="26" aria-hidden="true" fill="currentColor"><path d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2.1 7L3.2 29l6.4-1.8c2 1.1 4.2 1.6 6.4 1.6 7.2 0 13-5.7 13-12.8S23.2 3 16 3zm0 23.4c-2 0-4-.5-5.7-1.6l-.4-.2-3.8 1 1-3.7-.3-.4c-1.2-1.8-1.8-3.8-1.8-5.9C5 9.9 9.9 5.2 16 5.2s11 4.7 11 10.6-4.9 10.6-11 10.6zm6-7.9c-.3-.2-2-1-2.3-1.1-.3-.1-.5-.2-.8.2-.2.3-.9 1.1-1.1 1.3-.2.2-.4.3-.7.1-.3-.2-1.4-.5-2.7-1.6-1-.9-1.7-2-1.9-2.3-.2-.3 0-.5.2-.7l.5-.6c.2-.2.2-.4.3-.6.1-.2 0-.4 0-.6l-1-2.5c-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.9s1.2 3.3 1.4 3.6c.2.2 2.4 3.6 5.8 5 .8.3 1.4.5 1.9.7.8.3 1.5.2 2.1.1.6-.1 2-.8 2.2-1.6.3-.8.3-1.5.2-1.6-.1-.2-.3-.3-.7-.4z"/></svg>';
+
+function contact(c, lang, links, pagina) {
   const K = r(CONTACT, lang), C = company(lang);
   return `
 <section id="contacto" class="wrap section contact" aria-labelledby="h-contacto">
@@ -419,7 +424,8 @@ function contact(c, lang, links) {
       <p class="sub">${c.lead}</p>
       <dl class="dl">
         <dt>${K.phone}</dt><dd class="mono">${C.phone}</dd>
-        <dt>${K.email}</dt><dd class="mono">${C.email}</dd>${c.hours ? `
+        <dt>${K.email}</dt><dd class="mono">${C.email}</dd>${SITE.whatsapp ? `
+        <dt>${K.whatsapp}</dt><dd><a class="wa-link" href="${esc(enlaceWhatsapp(lang, pagina))}" target="_blank" rel="noopener">${K.waWrite} →</a></dd>` : ''}${c.hours ? `
         <dt>${K.hours}</dt><dd>${c.hours}</dd>` : ''}
       </dl>
     </div>
@@ -512,6 +518,7 @@ function renderPage(page, lang) {
     };
   }
 
+  const nombrePagina = String(p.meta.ogTitle).split(/\s[|·]\s/)[0].trim();
   let main = hero(p.hero, lang, base) + commit(p.commit, lang);
   if (page.type === 'cert') main += certCalc(p.calc, p.js, lang);
   if (page.type === 'afiliados') main += panel(p.panel, p.js);
@@ -519,7 +526,7 @@ function renderPage(page, lang) {
   main += services(p.services, lang) + explain(p.explain, lang, base);
   if (page.type === 'cert') main += zone(p.zone, p.js);
   main += process_(p.process) + guarantees(p.guarantees) + companySec(p.company, lang, base)
-    + (SITE.mostrarOpiniones ? reviews(p.reviews, lang) : '') + faq(p.faq) + contact(p.contact, lang, links);
+    + (SITE.mostrarOpiniones ? reviews(p.reviews, lang) : '') + faq(p.faq) + contact(p.contact, lang, links, nombrePagina);
 
   const script = { cert: 'certificados', afiliados: 'afiliados', ia: 'ia' }[page.type];
   return head({ lang, title: p.meta.title, description: p.meta.description, slug, alt, base, theme: p.theme, jsonld,
@@ -527,6 +534,7 @@ function renderPage(page, lang) {
     + header(p, lang, altHref, base)
     + `\n<main id="inicio">${main}\n</main>`
     + footer(lang, links, p.footer.tagline, p.footer.tag, base)
+    + (SITE.whatsapp ? `\n<a class="wa-btn" href="${esc(enlaceWhatsapp(lang, nombrePagina))}" target="_blank" rel="noopener" aria-label="${esc(r(CONTACT, lang).waOpen)}">${ICONO_WA}</a>` : '')
     + `\n<script type="application/json" id="vt-data">${JSON.stringify(data).replace(/</g, '\\u003c')}</script>
 <script src="${base}js/common.js" defer></script>
 <script src="${base}js/${script}.js" defer></script>${data.chat ? `

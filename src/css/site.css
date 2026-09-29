@@ -394,3 +394,15 @@ article.card:hover { background: var(--bg-hover); }
   .chat { right: 0; bottom: 0; width: 100vw; height: 88vh; height: 88dvh; }
 }
 @media print { .chat-btn, .chat { display: none !important; } }
+
+/* ---------- WhatsApp ---------- */
+.wa-btn { position: fixed; right: 20px; bottom: 20px; z-index: 59; width: 56px; height: 56px; display: grid; place-items: center; border-radius: 50%; background: #25D366; color: #fff; box-shadow: 0 8px 24px rgba(11,27,41,.35); }
+.wa-btn:hover { background: #1EBE5A; color: #fff; }
+.tiene-chat .wa-btn { bottom: 84px; }
+.chat-abierto .wa-btn { display: none; }
+.contact-box .wa-link { color: var(--ink); font-weight: 600; }
+@media (max-width: 600px) {
+  .wa-btn { right: 12px; bottom: 12px; width: 52px; height: 52px; }
+  .tiene-chat .wa-btn { bottom: 72px; }
+}
+@media print { .wa-btn { display: none !important; } }

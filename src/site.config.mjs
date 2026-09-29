@@ -20,6 +20,9 @@ export const SITE = {
   // Asistente (chat) con IA en cada página. Responde el CRM; el chat solo aparece si en el CRM
   // está puesta la clave de Claude y el asistente de esa página está activo.
   asistente: true,
+
+  // Número de WhatsApp (con prefijo 34, sin espacios ni +). Vacío = sin botón de WhatsApp.
+  whatsapp: '34687084638',
 };
 
 export const COMPANY = {
