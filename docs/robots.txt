@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://www.vertian.es/sitemap.xml
+Sitemap: https://nuevawebvertian.netlify.app/sitemap.xml

@@ -203,6 +203,8 @@ article.card:hover { background: var(--bg-hover); }
 .contact-box .dl { border-top-color: rgba(15,34,50,.25); font-size: 15px; }
 .contact-box .dl dt { color: rgba(15,34,50,.6); border-bottom-color: rgba(15,34,50,.12); padding: 12px 20px 12px 0; font-size: 12px; }
 .contact-box .dl dd { border-bottom-color: rgba(15,34,50,.12); padding: 12px 0; }
+.contact-box a { color: var(--ink); }
+.contact-box a:hover { color: var(--ac-dk); }
 .form { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%,240px),1fr)); gap: 18px 20px; position: relative; }
 .form label { display: block; }
 .form .lbl { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 500; margin-bottom: 6px; }

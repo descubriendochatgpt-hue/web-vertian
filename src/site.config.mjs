@@ -2,8 +2,9 @@
 // Los datos de empresa vacíos se muestran como [pendiente] hasta que se rellenen aquí.
 
 export const SITE = {
-  // Dominio definitivo (cámbialo cuando lo compres). Se usa en canonical, hreflang y Open Graph.
-  url: 'https://www.vertian.es',
+  // Dirección de la web. Cámbiala por el dominio propio cuando lo compres (p. ej. https://www.vertian.es).
+  // Se usa en canonical, hreflang, Open Graph, el sitemap y el aviso legal.
+  url: 'https://nuevawebvertian.netlify.app',
 
   // Los formularios envían las solicitudes a este correo mediante FormSubmit (https://formsubmit.co).
   // La primera vez que alguien envíe el formulario llegará un correo de activación a esta dirección.
@@ -16,11 +17,11 @@ export const SITE = {
 
 export const COMPANY = {
   name: 'VERTIAN SOLUTIONS, S.L.',
-  cif: '',            // p. ej. B-12345678
-  address: '',        // domicilio social completo
+  cif: 'B05630074',
+  address: 'Calle La Fuente 4, bajo, 46199 La Cabezuela, Cortes de Pallás (Valencia)',
   registry: '',       // Registro Mercantil de [provincia] · tomo, folio, hoja
-  phone: '',          // p. ej. +34 600 000 000
-  email: '',          // correo público de contacto, p. ej. hola@vertian.es
+  phone: '+34 687 08 46 38',
+  email: 'vertianmail@gmail.com', // correo público de contacto
   insurer: '',        // aseguradora de responsabilidad civil
   policy: '',         // número de póliza
   founded: '',        // año de fundación

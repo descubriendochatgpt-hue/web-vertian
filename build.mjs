@@ -51,6 +51,7 @@ function company(lang) {
     footRegistry: c.registry ? esc(c.registry) : r(PENDING.footRegistry, lang),
     footCif: c.cif ? esc(c.cif) : r(PENDING.cif, lang),
     crm: !!SITE.crmUrl,
+    dominio: SITE.url.replace(/^https?:\/\//, '').replace(/\/$/, ''),
   };
 }
 
@@ -529,7 +530,7 @@ function renderLegal(doc, lang) {
   const slug = doc.slug[lang], alt = doc.slug[lang === 'es' ? 'en' : 'es'];
   const base = up(slug);
   const links = legalLinks(lang, base);
-  const body = doc.body[lang](company(lang)).replace(/\{privacy\}/g, links.privacy);
+  const body = doc.body[lang](company(lang)).replace(/\{privacy\}/g, links.privacy).replace(/\{cookies\}/g, links.cookies);
   const title = doc.title[lang];
   const updated = lang === 'es' ? 'Última actualización' : 'Last updated';
   const date = new Date().toLocaleDateString(lang === 'es' ? 'es-ES' : 'en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
