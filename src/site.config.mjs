@@ -28,10 +28,9 @@ export const SITE = {
 export const COMPANY = {
   name: 'VERTIAN SOLUTIONS, S.L.',
   cif: 'B05630074',
+  // El domicilio social y el Registro Mercantil solo se muestran en el aviso legal (los exige la LSSI).
   address: 'Calle La Fuente 4, bajo, 46199 La Cabezuela, Cortes de Pallás (Valencia)',
   registry: '',       // Registro Mercantil de [provincia] · tomo, folio, hoja
   phone: '+34 687 08 46 38',
   email: 'vertianmail@gmail.com', // correo público de contacto
-  insurer: '',        // aseguradora de responsabilidad civil
-  policy: '',         // número de póliza
 };

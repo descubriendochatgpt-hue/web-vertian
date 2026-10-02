@@ -58,8 +58,8 @@ export const LEGAL = {
   <tr><th>Domicilio</th><td>${c.address}</td></tr>
   <tr><th>Correo electrónico</th><td>${c.email}</td></tr>
   <tr><th>Teléfono</th><td>${c.phone}</td></tr>
-  <tr><th>Datos registrales</th><td>${c.registry}</td></tr>
-  <tr><th>Dominio</th><td>${c.dominio}</td></tr>
+${c.registroReal ? `  <tr><th>Datos registrales</th><td>${c.registry}</td></tr>
+` : ''}  <tr><th>Dominio</th><td>${c.dominio}</td></tr>
 </table>
 <h2>2. Objeto y ámbito de aplicación</h2>
 <p>El presente Aviso Legal regula el acceso y uso del sitio web ${c.dominio} (en adelante, «el Sitio Web»). El acceso a la web es gratuito, salvo el coste de la conexión a internet, y atribuye la condición de usuario a quien lo utilice, lo que implica la aceptación plena de estas condiciones.</p>
@@ -101,8 +101,8 @@ export const LEGAL = {
   <tr><th>Registered office</th><td>${c.address}</td></tr>
   <tr><th>Email</th><td>${c.email}</td></tr>
   <tr><th>Phone</th><td>${c.phone}</td></tr>
-  <tr><th>Registry details</th><td>${c.registry}</td></tr>
-  <tr><th>Domain</th><td>${c.dominio}</td></tr>
+${c.registroReal ? `  <tr><th>Registry details</th><td>${c.registry}</td></tr>
+` : ''}  <tr><th>Domain</th><td>${c.dominio}</td></tr>
 </table>
 <h2>2. Purpose and scope</h2>
 <p>This Legal Notice governs access to and use of the website ${c.dominio} (the “Website”). Access is free of charge, except for the cost of your internet connection, and makes whoever uses it a user, which implies full acceptance of these terms.</p>
@@ -147,7 +147,6 @@ export const LEGAL = {
 <table>
   <tr><th>Identidad</th><td>${c.name}</td></tr>
   <tr><th>CIF</th><td>${c.cif}</td></tr>
-  <tr><th>Dirección</th><td>${c.address}</td></tr>
   <tr><th>Correo electrónico</th><td>${c.email}</td></tr>
   <tr><th>Teléfono</th><td>${c.phone}</td></tr>
 </table>
@@ -181,7 +180,7 @@ ${c.crm ? `  <tr><td>Responder a tus preguntas con el asistente automático (cha
   <li><strong>Portabilidad:</strong> recibir tus datos en un formato estructurado y de uso común.</li>
   <li><strong>Retirada del consentimiento:</strong> en cualquier momento, sin que afecte a la licitud del tratamiento previo.</li>
 </ul>
-<p>Para ejercerlos, escribe a ${c.email} o a ${c.address}, indicando el derecho que deseas ejercer y adjuntando una copia de tu DNI o documento equivalente.</p>
+<p>Para ejercerlos, escribe a ${c.email}, indicando el derecho que deseas ejercer y adjuntando una copia de tu DNI o documento equivalente.</p>
 <p>Si consideras que tus derechos no han sido atendidos correctamente, puedes presentar una reclamación ante la Agencia Española de Protección de Datos (<a href="https://www.aepd.es" rel="noopener">www.aepd.es</a>), C/ Jorge Juan, 6, 28001 Madrid.</p>
 <h2>7. Medidas de seguridad</h2>
 <p>${c.name} aplica las medidas técnicas y organizativas adecuadas para garantizar un nivel de seguridad acorde al riesgo y evitar la alteración, pérdida, tratamiento o acceso no autorizado a tus datos. Entre ellas: conexión cifrada (HTTPS), acceso al CRM solo con usuario y contraseña, y almacenamiento privado de los documentos que nos envías.</p>
@@ -194,7 +193,6 @@ ${c.crm ? `  <tr><td>Responder a tus preguntas con el asistente automático (cha
 <table>
   <tr><th>Identity</th><td>${c.name}</td></tr>
   <tr><th>Tax ID (CIF)</th><td>${c.cif}</td></tr>
-  <tr><th>Address</th><td>${c.address}</td></tr>
   <tr><th>Email</th><td>${c.email}</td></tr>
   <tr><th>Phone</th><td>${c.phone}</td></tr>
 </table>
@@ -228,7 +226,7 @@ ${c.crm ? `  <tr><td>Answering your questions with the website’s automated ass
   <li><strong>Portability:</strong> receive your data in a structured, commonly used format.</li>
   <li><strong>Withdrawal of consent:</strong> at any time, without affecting the lawfulness of prior processing.</li>
 </ul>
-<p>To exercise them, write to ${c.email} or to ${c.address}, stating the right you wish to exercise and enclosing a copy of your ID card or equivalent document.</p>
+<p>To exercise them, write to ${c.email}, stating the right you wish to exercise and enclosing a copy of your ID card or equivalent document.</p>
 <p>If you believe your rights have not been properly respected, you can file a complaint with the Spanish Data Protection Agency (<a href="https://www.aepd.es" rel="noopener">www.aepd.es</a>), C/ Jorge Juan, 6, 28001 Madrid.</p>
 <h2>7. Security measures</h2>
 <p>${c.name} applies appropriate technical and organisational measures to ensure a level of security suited to the risk and to prevent alteration, loss, processing or unauthorised access to your data. These include an encrypted connection (HTTPS), CRM access only with username and password, and private storage of the documents you send us.</p>

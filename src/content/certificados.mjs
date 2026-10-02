@@ -120,7 +120,7 @@ export function certPage(c) {
         { t: T('Precio cerrado', 'Fixed price'), p: T('Si en la visita algo no coincide con lo que nos dijiste, te avisamos antes de seguir. Sin cargos sorpresa.', 'If something at the visit doesn’t match what you told us, we tell you before going on. No surprise charges.') },
         { t: T('Plazo de entrega', 'Delivery time'), p: T('Certificado entregado en un máximo de 5 días hábiles desde la visita.', 'Certificate delivered within 5 working days of the visit.') },
         { t: T('Corrección sin coste', 'Free corrections'), p: T('Si hay un error nuestro, lo corregimos y volvemos a registrar sin cobrarte.', 'If we make a mistake, we fix it and re-register at no charge.') },
-        { t: T('Seguro de RC', 'Liability insurance'), p: T('Póliza de responsabilidad civil profesional. Te enviamos copia si la pides.', 'Professional liability policy. We’ll send you a copy on request.') },
+        { t: T('Registro incluido', 'Registration included'), p: T('Nos encargamos del trámite de registro en el organismo oficial y te enviamos el justificante junto al certificado.', 'We handle the official registration and send you the receipt together with the certificate.') },
       ],
     },
     company: {
@@ -147,7 +147,7 @@ export function certPage(c) {
         [T('¿Y si me sale una letra mala?', 'What if I get a bad rating?'), T('Puedes vender o alquilar igual. El certificado incluye recomendaciones de mejora ordenadas por coste, útiles si piensas pedir ayudas a la rehabilitación.', 'You can still sell or rent. The certificate includes improvement recommendations sorted by cost, useful if you plan to apply for renovation grants.')],
         [T('¿Tengo que estar presente en la visita?', 'Do I have to be there for the visit?'), T('No hace falta que seas tú. Basta con que alguien nos abra: un familiar, el inquilino o tu inmobiliaria.', 'It doesn’t have to be you. Anyone who can let us in will do: a relative, the tenant or your estate agent.')],
         [T('¿Qué documentación necesito?', 'What documents do I need?'), T('La dirección y, si la tienes, la referencia catastral (aparece en el recibo del IBI). Si hay facturas de reformas de ventanas, caldera o aislamiento, ayudan a mejorar el resultado.', 'The address and, if you have it, the cadastral reference (it’s on the IBI property tax bill). Invoices for new windows, boiler or insulation help improve the result.')],
-        [T('¿Por qué fiarme de una empresa nueva?', 'Why trust a new company?'), T('Porque todo lo que decimos se puede comprobar: CIF, domicilio, seguro de responsabilidad civil y técnico colegiado. Y porque el precio queda cerrado por escrito antes de la visita.', 'Because everything we say can be checked: tax ID, registered office, liability insurance and a registered technician. And because the price is fixed in writing before the visit.')],
+        [T('¿Por qué fiarme de una empresa nueva?', 'Why trust a new company?'), T('Porque trabajamos con transparencia: factura de VERTIAN SOLUTIONS, S.L. con CIF y técnico colegiado. Y porque el precio queda cerrado por escrito antes de la visita.', 'Because we work transparently: invoices from VERTIAN SOLUTIONS, S.L. with a tax ID and a registered technician. And because the price is fixed in writing before the visit.')],
       ],
     },
     contact: {

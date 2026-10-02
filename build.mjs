@@ -43,11 +43,10 @@ function company(lang) {
     cif: c.cif ? esc(c.cif) : p('cif'),
     address: c.address ? esc(c.address) : p('address'),
     registry: c.registry ? esc(c.registry) : p('registry'),
-    insurance: `${c.insurer ? esc(c.insurer) : p('insurer')} · ${r(COMPANY_SECTION.policyWord, lang)} ${c.policy ? esc(c.policy) : p('policy')}`,
+    // El Registro Mercantil solo sale en el aviso legal cuando está rellenado en site.config.mjs
+    registroReal: Boolean(c.registry),
     phone: c.phone ? `<a href="tel:${esc(c.phone.replace(/\s/g, ''))}">${esc(c.phone)}</a>` : p('phone'),
     email: c.email ? `<a href="mailto:${esc(c.email)}">${esc(c.email)}</a>` : p('email'),
-    footAddress: c.address ? esc(c.address) : r(PENDING.footAddress, lang),
-    footRegistry: c.registry ? esc(c.registry) : r(PENDING.footRegistry, lang),
     footCif: c.cif ? esc(c.cif) : r(PENDING.cif, lang),
     crm: !!SITE.crmUrl,
     dominio: SITE.url.replace(/^https?:\/\//, '').replace(/\/$/, ''),
@@ -352,8 +351,8 @@ const guarantees = g => `
 function companySec(c, lang, base) {
   const S = r(COMPANY_SECTION, lang), C = company(lang);
   const rows = [
-    [S.rows.name, C.name], [S.rows.cif, `<span class="mono">${C.cif}</span>`], [S.rows.address, C.address],
-    [S.rows.registry, C.registry], [S.rows.insurance, C.insurance], ...c.extraRows, [S.rows.data, S.dataText],
+    // Sin domicilio, registro ni seguro: la empresa prefiere no publicarlos fuera del aviso legal
+    [S.rows.name, C.name], [S.rows.cif, `<span class="mono">${C.cif}</span>`], ...c.extraRows, [S.rows.data, S.dataText],
   ];
   return `
 <section id="empresa" class="wrap section" aria-labelledby="h-empresa">
@@ -461,7 +460,7 @@ function footer(lang, links, tagline, tag, base) {
 <footer class="site-footer">
   <div class="wrap top">
     <div><div class="logo-box"><img src="${base}assets/img/logo-vertian.png" alt="VERTIAN SOLUTIONS" width="115" height="26"></div>${tagline ? `<p style="margin-top:14px">${tagline}</p>` : ''}</div>
-    <div class="legal-id">VERTIAN SOLUTIONS, S.L.<br>CIF ${C.footCif}<br>${C.footAddress}<br>${C.footRegistry}</div>
+    <div class="legal-id">VERTIAN SOLUTIONS, S.L.<br>CIF ${C.footCif}</div>
     <div class="links">
       <a href="${links.aviso}">${r(UI.legalNotice, lang)}</a>
       <a href="${links.privacy}">${r(UI.privacy, lang)}</a>
@@ -492,7 +491,6 @@ function renderPage(page, lang) {
   const altHref = `${base}${alt}/${IDX}`;
   const links = legalLinks(lang, base);
   const jsonld = { ...p.jsonld, url: `${SITE.url}/${slug}/`, ...(COMPANY.email && { email: COMPANY.email }), ...(COMPANY.phone && { telephone: COMPANY.phone }) };
-  if (jsonld.address && COMPANY.address) jsonld.address.streetAddress = COMPANY.address;
 
   const data = {
     lang, page: page.slug.es, endpoint: SITE.crmUrl ? `${SITE.crmUrl.replace(/\/+$/, '')}/api/publico/solicitud` : `https://formsubmit.co/ajax/${SITE.formEmail}`,

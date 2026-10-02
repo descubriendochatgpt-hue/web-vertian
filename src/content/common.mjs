@@ -35,7 +35,6 @@ export const COMMIT = (feeText) => [
   { v: '24 h', t: T('Respuesta a toda solicitud en día laborable.', 'We reply to every request within one working day.') },
   { v: '0 €', t: feeText },
   { v: 'S.L.', t: T('Factura de VERTIAN SOLUTIONS, S.L. con CIF.', 'Invoiced by VERTIAN SOLUTIONS, S.L. with a tax ID.') },
-  { v: 'RC', t: T('Seguro de responsabilidad civil profesional.', 'Professional liability insurance.') },
 ];
 
 export const COMPANY_SECTION = {
@@ -53,13 +52,9 @@ export const COMPANY_SECTION = {
   rows: {
     name: T('RAZÓN SOCIAL', 'COMPANY NAME'),
     cif: T('CIF', 'TAX ID (CIF)'),
-    address: T('DOMICILIO', 'REGISTERED OFFICE'),
-    registry: T('REGISTRO', 'REGISTRY'),
-    insurance: T('SEGURO RC', 'LIABILITY INSURANCE'),
     data: T('DATOS', 'DATA'),
   },
   dataText: T('Tratamiento conforme al RGPD. No cedemos datos a terceros.', 'Processed under the GDPR. We never pass data to third parties.'),
-  policyWord: T('póliza n.º', 'policy no.'),
 };
 
 export const REVIEWS = {
@@ -121,12 +116,8 @@ export const PENDING = {
   cif: T('[B-00000000]', '[B-00000000]'),
   address: T('[Domicilio social]', '[Registered office]'),
   registry: T('Registro Mercantil de [provincia] · [tomo, folio, hoja]', 'Companies Registry of [province] · [volume, folio, sheet]'),
-  insurer: T('[Aseguradora]', '[Insurer]'),
-  policy: T('[0000]', '[0000]'),
   phone: T('[+34 000 000 000]', '[+34 000 000 000]'),
   email: T('[correo de contacto]', '[contact email]'),
-  footAddress: T('[Domicilio social pendiente]', '[Registered office pending]'),
-  footRegistry: T('[Registro Mercantil pendiente]', '[Registry details pending]'),
 };
 
 // Asistente (chat) de cada página. Responde el CRM con Claude y la base de conocimiento de cada página.
